@@ -5,10 +5,58 @@
  */
 package aircom;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author User
+ * @author Jimmy
+ * Class to calculate costs
  */
 public class CalculateCosts {
     
+    //metoder för att beräkna biljettpris och...
+    //...matpris ska hamna i Passenger har vi bestämt just nu
+    //public int cal
+
+    //beräknar totala passengerar priset baserat på biljett och mat
+    public int calculateTotalPassengerPrice(int ticketPrice, int foodPrice) {
+        int totalPassengerPrice = ticketPrice + foodPrice;
+        return totalPassengerPrice;
+    }
+    
+    //public void printTotalPassengerPrice(Passenger customer, int ticketPrice, int foodPrice) {
+    //skriver ut totala passengerar priset
+    public void printTotalPassengerPrice(Passenger customer, int totalPrice) {        
+        System.out.println("Total price for passenger " + customer + 
+                " = " + totalPrice);        
+    }
+    
+    public int calculateAirlineIncome(ArrayList<Passenger> arrayPass) {
+        int sumPassengerPrices = 0;
+        for (Passenger pass : arrayPass) {
+            //bijettPris-metod ska anropas här under...
+            //...och även matpriset
+            //sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(pass.planeClass *, sumPassengerPrices)
+            
+        }
+        
+        return sumPassengerPrices;
+    }
+    
+    public void printAirlineIncome(int income) {
+        System.out.println("Income for the airline company is " + income);
+    }
+    
+    public int calculateAirlineProfit(int income) {
+        int sumAirlineProfit = 0;        
+        
+        //70% of the income is used to cover the costs of the airline company
+        //the profit is then 30% of the income
+        sumAirlineProfit = (int) 0.3 * income;
+        return sumAirlineProfit;
+    }
+    
+    public void printAirlineProfit(int profit) {
+        System.out.println("The airline company's profit is " + profit);
+    }
 }
