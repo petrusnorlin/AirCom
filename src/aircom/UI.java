@@ -19,7 +19,8 @@ public class UI {
     
     String firstName = "";
     String surName = "";
-    Gender gender = new Gender();
+    String genderReply = "";
+    Gender gender;// = new Gender()
     int persNr = 0;
     String phoneNr = "";
     boolean eat = false;
@@ -61,9 +62,20 @@ public class UI {
         System.out.println("What is your surname?");
         surName = sc.nextLine();
         
-        System.out.println("What is your gender?");
+        System.out.println("What is your gender? ([M]ale, [F]emale or [O]ther)");
         //TODO: register gender
         //gender = ...//if-satser...?
+        genderReply = sc.nextLine();
+        if (genderReply.equals("M") || genderReply.equals("m")) {
+            gender = Gender.MALE;
+        }
+        else if (genderReply.equals("F") || genderReply.equals("f")) {
+            gender = Gender.WOMAN;
+        }
+        else if (genderReply.equals("O") || genderReply.equals("o")) {
+            gender = Gender.OTHER;
+        }
+        //else you wrote something wrong?
         
         System.out.println("What is your personal number?");
         persNr = sc.nextInt();
@@ -71,10 +83,11 @@ public class UI {
         System.out.println("What is your phone number?");
         phoneNr = sc.nextLine();
         
-        Passenger customer = new Passenger(firstName, surName, persNr, phoneNr);
+        Passenger customer = new Passenger(firstName, surName, persNr, phoneNr, gender, eat);
         
         //calculate and print total price
         int foodPrices = 215;//köper mat för 215 kr
+        //if passenger.flightClass = firstClass typ
         int passengerPrice = calcCosts.calculateTotalPassengerPrice(20000, foodPrices);
         
         calcCosts.printTotalPassengerPrice(customer, passengerPrice);//skriver ut
@@ -82,14 +95,19 @@ public class UI {
         
     }
 
-    public void airlineInfo(){
+    /**
+     *
+     */
+    public void airlineInfo() {
         int userSelection = 0;
         System.out.println("What information about the airline would you like to know?");
         System.out.println("1. Airline income");
         System.out.println("2. Airline profit");
         userSelection = sc.nextInt();
         if (userSelection == 1) {
-            int income = calcCosts.calculateAirlineIncome(arrayPass);
+            
+            //arrayPass ska ersättas med en passagerarlista från någon klass
+            //int income = calcCosts.calculateAirlineIncome(arrayPass);
             
         }
     }
