@@ -13,11 +13,9 @@ import java.util.Map.Entry;
  *
  * @author User
  */
-public class Passenger {
+public class Passenger {   
     
-    
-    
-  private String passengerID;
+  private int passengerID;
     private String fName;
     private String lName;
     private int personalNr;
@@ -48,7 +46,7 @@ public class Passenger {
         this.eat = eat;
     }
 
-    public String getpassengerID() {
+    public int getPassengerID() {
         return passengerID;
     }
 
@@ -68,7 +66,7 @@ public class Passenger {
         return phonenumber;
     }
 
-    public void setpassengerID() {
+    public void setPassengerID(int PassengerID) {
         this.passengerID = passengerID;
     }
 
