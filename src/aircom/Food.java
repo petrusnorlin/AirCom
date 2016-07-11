@@ -4,37 +4,34 @@
  * and open the template in the editor.
  */
 package aircom;
-
-import java.util.HashMap;
 import java.util.Objects;
 
 /**
  *
- * @author User
+ * @author Mtilla
  */
 public class Food {
     
+    //Contains only one private field
     private String foodItem; 
-    //private int price;
 
+    //Constructor:
     public Food(String foodItem) {
         this.foodItem = foodItem;
     }
-
-    @Override
-    public String toString() {
-        return foodItem;
-    }
-
-     
-   
+    
+    //Getter n Setter:
     public String getFoodItem() {
         return foodItem;
     }
-
-   
     public void setFoodItem(String foodItem) {
         this.foodItem = foodItem;
+    }
+    
+    //OVERRIDDEN Object methods:
+    @Override
+    public String toString() {
+        return foodItem;
     }
 
     @Override

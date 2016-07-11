@@ -7,8 +7,8 @@ package aircom;
 
 /**
  *
- * @author User
+ * @author Mtilla
  */
-public enum Gender {
+public enum GenderType {
     WOMAN,MALE,OTHER
 }

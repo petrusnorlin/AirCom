@@ -8,31 +8,26 @@ import java.util.ArrayList;
 
 /**
  *
- * @author User
+ * @author Mtilla
  */
+
 public class FlightManager {
     
     Airplane airplane;
-    
-    
+    DestinationType destination;
     private static int lastPass = 0;
     
     ArrayList<Passenger> passengerList = new ArrayList<>();
-           
-
-    public void registerPassenger(Passenger pa) {
-        pa.setPassengerID(getPassengerID());
-        passengerList.add(pa);
-    }
     
-    public void addPassenger(){
-    
-    }
-            
-    
-    
-     
-        private int getPassengerID() {
+    private int getPassengerID() {
         return lastPass++;
         }
-}
+              
+    //Add passenger to ArrayList passengerList:
+    public void registerPassenger(Passenger pa) {
+        pa.setPassengerID(getPassengerID()); //first setting the passengerID by calling getPassengerID()
+        passengerList.add(pa);//adding the passenger to the ArrayList
+    }
+    
+ }
+          
