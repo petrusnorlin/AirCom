@@ -21,7 +21,8 @@ public class FlightManager {
            
 
     public void registerPassenger(Passenger pa) {
-        
+        pa.setPassengerID(getPassengerID());
+        passengerList.add(pa);
     }
     
     public void addPassenger(){
