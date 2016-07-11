@@ -5,24 +5,45 @@
  */
 package aircom;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+
 /**
  *
  * @author User
  */
 public class Passenger {
     
+    
+    
   private String passengerID;
     private String fName;
     private String lName;
     private int personalNr;
     private String phonenumber;
+    private Gender gender;
+    
+    HashMap<Food, Integer> chosenFood = new HashMap<Food, Integer>();
+    
+    public int calculateFoodOrder()
+    {
+        int sum = 0;
+        Iterator it = chosenFood.entrySet().iterator();
+      while (it.hasNext()) {
+         Entry pair = (Entry)it.next();
+          sum += (int)pair.getValue();        
+      }
+      return sum;
+    }
 
     //alt+Insert för att auto-generate 
-    public Passenger(String fName, String lName, int personalNr, String phonenumber) {
+    public Passenger(String fName, String lName, int personalNr, String phonenumber, Gender gender) {
         this.fName = fName;
         this.lName = lName;
         this.personalNr = personalNr;
         this.phonenumber = phonenumber;
+        this.gender = gender;
     }
 
     public String getpassengerID() {
