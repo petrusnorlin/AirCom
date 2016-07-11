@@ -27,7 +27,11 @@ public class UI {
     
     CalculateCosts calcCosts = new CalculateCosts();    
     
-    public UI() {
+    public UI() {        
+        
+    }
+    
+    public void printMenu() {
         System.out.println("Welcome to AirCom!");
         
         System.out.println("Where would you like to go?");
@@ -51,6 +55,7 @@ public class UI {
         }
         else if (sc.equals("N") || sc.equals("n")) {
             eat = false;
+        }
         //TODO: Passenger.setEat = true;
         //TODO: If eat = yes - present menu where user can decide
             //TODO: present list of food items
@@ -91,13 +96,8 @@ public class UI {
         int passengerPrice = calcCosts.calculateTotalPassengerPrice(20000, foodPrices);
         
         calcCosts.printTotalPassengerPrice(customer, passengerPrice);//skriver ut
-        
-        
-    }
-
-    /**
-     *
-     */
+    }    
+    
     public void airlineInfo() {
         int userSelection = 0;
         System.out.println("What information about the airline would you like to know?");
@@ -112,3 +112,4 @@ public class UI {
         }
     }
 }
+
