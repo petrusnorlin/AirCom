@@ -19,9 +19,10 @@ public class UI {
     
     String firstName = "";
     String surName = "";
-    //Gender gender = new Gender();
+    Gender gender = new Gender();
     int persNr = 0;
     String phoneNr = "";
+    boolean eat = false;
     
     CalculateCosts calcCosts = new CalculateCosts();    
     
@@ -40,9 +41,15 @@ public class UI {
         //TODO: check if first/economy class is full
         //TODO: if full - ask if the passenger wants to travel in the other class...
         //...if the other class has a free seat.
-        //...otherwise quit
+        //...otherwise quit        
         
-        System.out.println("Would you like to eat on the plane?");
+        System.out.println("Would you like to eat on the plane (y or n)?");
+        sc.nextLine();
+        if (sc.equals("Y") || sc.equals("y")) {
+            eat = true;
+        }
+        else if (sc.equals("N") || sc.equals("n")) {
+            eat = false;
         //TODO: Passenger.setEat = true;
         //TODO: If eat = yes - present menu where user can decide
             //TODO: present list of food items
@@ -73,5 +80,17 @@ public class UI {
         calcCosts.printTotalPassengerPrice(customer, passengerPrice);//skriver ut
         
         
-    }    
+    }
+
+    public void airlineInfo(){
+        int userSelection = 0;
+        System.out.println("What information about the airline would you like to know?");
+        System.out.println("1. Airline income");
+        System.out.println("2. Airline profit");
+        userSelection = sc.nextInt();
+        if (userSelection == 1) {
+            int income = calcCosts.calculateAirlineIncome(arrayPass);
+            
+        }
+    }
 }

@@ -17,6 +17,8 @@ public class AirCom {
      */
     public static void main(String[] args) {
         System.out.println("Welcome to AirCom!");
+        
+        UI ui = new UI();
     }
     
 }
