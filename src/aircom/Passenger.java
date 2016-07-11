@@ -23,6 +23,7 @@ public class Passenger {
     private int personalNr;
     private String phonenumber;
     private Gender gender;
+    private Boolean eat;
     
     HashMap<Food, Integer> chosenFood = new HashMap<Food, Integer>();
     
@@ -38,12 +39,13 @@ public class Passenger {
     }
 
     //alt+Insert för att auto-generate 
-    public Passenger(String fName, String lName, int personalNr, String phonenumber, Gender gender) {
+    public Passenger(String fName, String lName, int personalNr, String phonenumber, Gender gender, Boolean eat) {
         this.fName = fName;
         this.lName = lName;
         this.personalNr = personalNr;
         this.phonenumber = phonenumber;
         this.gender = gender;
+        this.eat = eat;
     }
 
     public String getpassengerID() {

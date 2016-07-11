@@ -12,6 +12,9 @@ import java.util.ArrayList;
  */
 public class FlightManager {
     
+    Airplane airplane;
+    
+    
     private static int lastPass = 0;
     
     ArrayList<Passenger> passengerList = new ArrayList<>();

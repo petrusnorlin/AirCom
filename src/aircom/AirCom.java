@@ -9,7 +9,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 /**
  *
- * @author User
+ * @author Jimmy
+ * Main-klassen
  */
 public class AirCom {
 
@@ -17,6 +18,8 @@ public class AirCom {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        System.out.println("Welcome to AirCom!");
         
       printFirstClassMenu(FoodMenu.firstClassMenu);
 
