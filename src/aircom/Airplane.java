@@ -56,8 +56,6 @@ public class Airplane {
         }
         return -1;
     }    
-    private String planeNameID;
-
     
     
 }
