@@ -17,6 +17,9 @@ public class AirCom {
     /**
      * @param args the command line arguments
      */
+    
+    //la jag(Jimmy) till
+    Airplane plane = new Airplane();
     public static void main(String[] args) {
         
         System.out.println("Welcome to AirCom!");
@@ -30,6 +33,7 @@ public class AirCom {
 
    
         UI ui = new UI();
+        //UI ui2 = new UI(plane);
         ui.printMenu();
     }
     public static void printFoodMenu(HashMap mp) {

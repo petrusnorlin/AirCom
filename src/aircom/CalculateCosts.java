@@ -31,12 +31,15 @@ public class CalculateCosts {
                 " = " + totalPrice);        
     }
     
-    public int calculateAirlineIncome(ArrayList<Passenger> arrayPass) {
+    //public int calculateAirlineIncome(ArrayList<Passenger> arrayPass) {
+    public int calculateAirlineIncome(ArrayList<Seat> arrayPass) {
         int sumPassengerPrices = 0;
-        for (Passenger pass : arrayPass) {
+        //for (Passenger pass : arrayPass) {
+        for (Seat chair : arrayPass) {
             //bijettPris-metod ska anropas här under...
             //...och även matpriset
-            //sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(pass.planeClass *, sumPassengerPrices)
+            chair.seatedPassenger.
+            sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(pass.planeClass * sumPassengerPrices)
             
         }
         

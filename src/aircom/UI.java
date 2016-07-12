@@ -16,6 +16,7 @@ public class UI {
     Scanner sc = new Scanner(System.in);
     
     String dest = "";
+    Airplane plane;
     
     String firstName = "";
     String surName = "";
@@ -28,7 +29,11 @@ public class UI {
     CalculateCosts calcCosts = new CalculateCosts();    
     
     public UI() {        
-        
+        plane = new Airplane();
+    }
+    
+    public UI(Airplane plane) {        
+        this.plane = plane;
     }
     
     public void printMainMenu() {
@@ -146,17 +151,20 @@ public class UI {
             
         }
         //menyVal = one.nextInt();
+        int income = 0;
         switch (userSelection) {//menyVal
             case 0:
                 System.exit(0);
-            case 1: printMenu();//Book a trip;
-                break;
-            case 2: airlineInfo();//Airline info;
-                break;
-            case 3: //Show Airplane info();
-                break;
-            case 4: //Take off Airplane();
-                break;            
+            case 1: income = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats());//Airline income;
+                    calcCosts.printAirlineIncome(income);
+                    break;
+            case 2: income = calcCosts.calculateAirlineIncome(arrayPass);//Airline income;
+                    calcCosts.printAirlineIncome(income);
+                    int profit = calcCosts.calculateAirlineProfit(income);//Airline profit;
+                    calcCosts.printAirlineProfit(profit);
+                    break;
+            case 9: //Show Airplane info();
+                    break;                       
         }
     }
 }
