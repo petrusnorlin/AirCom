@@ -5,9 +5,12 @@
  */
 package aircom;
 
+import java.util.HashMap;
+import java.util.Iterator;
 /**
  *
- * @author PetrusNorlin
+ * @author Jimmy
+ * Main-class
  */
 public class AirCom {
 
@@ -15,7 +18,28 @@ public class AirCom {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        System.out.println("Welcome to AirCom!");
+        
+        
+       System.out.println("Menu for 1st Class passengers:");  
+      printFoodMenu(FoodMenu.firstClassMenu);
+       System.out.println();
+       System.out.println("Menu for ECO Class passengers:");
+      printFoodMenu(FoodMenu.ecoClassMenu);
+
+   
+        UI ui = new UI();
+        ui.printMenu();
+    }
+    public static void printFoodMenu(HashMap mp) {
+        Iterator it = mp.entrySet().iterator();
+    while (it.hasNext()) {
+        HashMap.Entry pair = (HashMap.Entry)it.next();
+        System.out.println(pair.getKey() + " price: " + pair.getValue() + "kr");
+        //System.out.println(((Food)pair.getKey()).getFoodItem() + " price: " + pair.getValue()); //när jag inte overridar toString()
     }
     
+    
+}
 }
