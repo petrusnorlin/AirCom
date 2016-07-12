@@ -10,5 +10,5 @@ package aircom;
  * @author Mtilla
  */
 public enum GenderType {
-    WOMAN,MALE,OTHER
+    FEMALE,MALE,OTHER
 }

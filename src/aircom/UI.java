@@ -20,7 +20,7 @@ public class UI {
     String firstName = "";
     String surName = "";
     String genderReply = "";
-    Gender gender;// = new Gender()
+    GenderType gender;// = new Gender()
     int persNr = 0;
     String phoneNr = "";
     boolean eat = false;
@@ -72,13 +72,13 @@ public class UI {
         //gender = ...//if-satser...?
         genderReply = sc.nextLine();
         if (genderReply.equals("M") || genderReply.equals("m")) {
-            gender = Gender.MALE;
+            gender = GenderType.MALE;
         }
         else if (genderReply.equals("F") || genderReply.equals("f")) {
-            gender = Gender.WOMAN;
+            gender = GenderType.FEMALE;
         }
         else if (genderReply.equals("O") || genderReply.equals("o")) {
-            gender = Gender.OTHER;
+            gender = GenderType.OTHER;
         }
         //else you wrote something wrong?
         
