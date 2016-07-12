@@ -195,7 +195,9 @@ public class UI {
     
     private void printFoodMenu(FlightType flType) {
         if (flType == FlightType.FIRSTCLASS) {
-            
+            for (String food : FoodMenu.firstClassMenu) {
+                
+            }
         }
         else if (flType == FlightType.ECOCLASS) {
             
