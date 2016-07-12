@@ -27,7 +27,9 @@ public class AirCom {
        System.out.println();
        System.out.println("Menu for ECO Class passengers:");
       printFoodMenu(FoodMenu.ecoClassMenu);
+
    
+        UI ui = new UI();
     }
     public static void printFoodMenu(HashMap mp) {
         Iterator it = mp.entrySet().iterator();
