@@ -27,6 +27,10 @@ public class Passenger {
     
     HashMap<Food, Integer> chosenFood = new HashMap<Food, Integer>();
 
+    public String getChoseFood() {
+        return choseFood;
+    }
+    
     //public void setChosenFood(HashMap<Food, Integer> chosenFood) {
     public void setChosenFood(int menuChoice, FlightType flightType) {
         
