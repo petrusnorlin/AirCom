@@ -25,6 +25,7 @@ public class AirCom {
 
    
         UI ui = new UI();
+        ui.printMenu();
     }
     public static void printFirstClassMenu(HashMap mp) {
         Iterator it = mp.entrySet().iterator();
