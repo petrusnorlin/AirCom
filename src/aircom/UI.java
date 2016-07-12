@@ -31,6 +31,36 @@ public class UI {
         
     }
     
+    public void printMainMenu() {
+        Scanner one = new Scanner(System.in);
+        int menyVal;
+        //while(menyVal != 7){
+        System.out.println("Welcome to AirCom!");
+        System.out.println();
+        System.out.println("What would you like to do?");
+        System.out.println();
+        System.out.println("1) Book a trip");
+        System.out.println("2) Airline info");
+        System.out.println("3) Show Airplane info");
+        System.out.println("4) Take off Airplane");
+        System.out.println();
+        System.out.println("0) Exit AirCom");
+        
+        menyVal = one.nextInt();
+        switch (menyVal) {
+            case 0:
+                System.exit(0);
+            case 1: printMenu();//Book a trip;
+                break;
+            case 2: airlineInfo();//Airline info;
+                break;
+            case 3: //Show Airplane info();
+                break;
+            case 4: //Take off Airplane();
+                break;            
+        }
+    }
+    
     public void printMenu() {
         System.out.println("Welcome to AirCom!");
         
@@ -49,8 +79,8 @@ public class UI {
         //...otherwise quit        
         
         System.out.println("Would you like to eat on the plane (y or n)?");
-        sc.nextLine();
-        if (sc.equals("Y") || sc.equals("y")) {
+        sc.nextLine();//läsa in till variabel
+        if (sc.equals("Y") || sc.equals("y")) {//equalsIgnoreCase()
             eat = true;
         }
         else if (sc.equals("N") || sc.equals("n")) {
@@ -100,16 +130,33 @@ public class UI {
     }    
     
     public void airlineInfo() {
+        Scanner one = new Scanner(System.in);
         int userSelection = 0;
         System.out.println("What information about the airline would you like to know?");
         System.out.println("1. Airline income");
         System.out.println("2. Airline profit");
-        userSelection = sc.nextInt();
+        System.out.println();
+        System.out.println("9) Return to previous menu");
+        System.out.println("0) Exit AirCom");
+        userSelection = one.nextInt();//sc
         if (userSelection == 1) {
             
             //arrayPass ska ersättas med en passagerarlista från någon klass
             //int income = calcCosts.calculateAirlineIncome(arrayPass);
             
+        }
+        //menyVal = one.nextInt();
+        switch (userSelection) {//menyVal
+            case 0:
+                System.exit(0);
+            case 1: printMenu();//Book a trip;
+                break;
+            case 2: airlineInfo();//Airline info;
+                break;
+            case 3: //Show Airplane info();
+                break;
+            case 4: //Take off Airplane();
+                break;            
         }
     }
 }

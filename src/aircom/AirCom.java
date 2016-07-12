@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 /**
  *
- * @author Jimmy
+ * @author Jimmy, Matilda, Petrus
  * Main-class
  */
 public class AirCom {
