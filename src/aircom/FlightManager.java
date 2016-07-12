@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class FlightManager {
     
-    Airplane airplane;
+    AirplaneOld airplane;
     DestinationType destination;
     private static int lastPass = 0;
     
