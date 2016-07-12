@@ -22,6 +22,19 @@ public class Airplane {
         firstClassSeats = new ArrayList<>();
         economyClassSeats = new ArrayList<>();       
     }
+
+    //jag la till 3 get-metoder då jag behöver listorna i UI(Jimmy)
+    public String getPlaneID() {
+        return planeID;
+    }
+
+    public ArrayList<Seat> getFirstClassSeats() {
+        return firstClassSeats;
+    }
+
+    public ArrayList<Seat> getEconomyClassSeats() {
+        return economyClassSeats;
+    }
  
     public boolean isTherePassengerSpace(FlightClass flightClass) {
         if (null != flightClass) switch (flightClass) {
