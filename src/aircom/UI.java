@@ -18,12 +18,15 @@ public class UI {
     String dest = "";
     Airplane plane;
     
+    String flightClass = "";
+    FlightType flightType;
     String firstName = "";
     String surName = "";
     String genderReply = "";
     GenderType gender;// = new Gender()
     int persNr = 0;
     String phoneNr = "";
+    String eatReply = "";
     boolean eat = false;
     
     CalculateCosts calcCosts = new CalculateCosts();    
@@ -74,9 +77,16 @@ public class UI {
         //Airplane.setDestination = ...
         dest = sc.nextLine();//next?
         
-        System.out.println("Would you like to travel in first class or economy class?");
+        System.out.println("Would you like to travel in first class['F'] or economy class['E']?");
         //TODO: read in the class type
         //Passenger.setFlightClass//first eller economy
+        flightClass = sc.nextLine();
+        if (flightClass.equalsIgnoreCase("f")) {
+            flightType = FlightType.FIRSTCLASS;
+        }
+        else if (flightClass.equalsIgnoreCase("e")) {
+            flightType = FlightType.ECOCLASS;
+        }
         
         //TODO: check if first/economy class is full
         //TODO: if full - ask if the passenger wants to travel in the other class...
@@ -84,17 +94,21 @@ public class UI {
         //...otherwise quit        
         
         System.out.println("Would you like to eat on the plane (y or n)?");
-        sc.nextLine();//läsa in till variabel
-        if (sc.equals("Y") || sc.equals("y")) {//equalsIgnoreCase()
+        eatReply = sc.nextLine();//läsa in till variabel
+        //if (sc.equals("Y") || sc.equals("y")) {//equalsIgnoreCase()
+        if (eatReply.equalsIgnoreCase("y")) {
             eat = true;
         }
-        else if (sc.equals("N") || sc.equals("n")) {
+        else if (eatReply.equalsIgnoreCase("n")) {
             eat = false;
         }
         //TODO: Passenger.setEat = true;
         //TODO: If eat = yes - present menu where user can decide
             //TODO: present list of food items
             //TODO: read in choices by the users
+            if (eat == true) {
+                printFoodMenu(flightType);
+            }
         
         System.out.println("What is your first name?");        
         firstName = sc.nextLine();
@@ -106,13 +120,14 @@ public class UI {
         //TODO: register gender
         //gender = ...//if-satser...?
         genderReply = sc.nextLine();
-        if (genderReply.equals("M") || genderReply.equals("m")) {
+        //if (genderReply.equals("M") || genderReply.equals("m")) {
+        if (genderReply.equalsIgnoreCase("m")) {  
             gender = GenderType.MALE;
         }
-        else if (genderReply.equals("F") || genderReply.equals("f")) {
+        else if (genderReply.equalsIgnoreCase("f")) {
             gender = GenderType.FEMALE;
         }
-        else if (genderReply.equals("O") || genderReply.equals("o")) {
+        else if (genderReply.equalsIgnoreCase("o")) {
             gender = GenderType.OTHER;
         }
         //else you wrote something wrong?
@@ -123,13 +138,20 @@ public class UI {
         System.out.println("What is your phone number?");
         phoneNr = sc.nextLine();
         
-        Passenger customer = new Passenger(firstName, surName, persNr, phoneNr, gender, eat);
+        Passenger customer = new Passenger(flightType, eat, firstName, surName, persNr, phoneNr, gender);
         
-        
+        //customer.
         //calculate and print total price
         int foodPrices = 215;//köper mat för 215 kr
+        foodPrices = customer.calculateFoodOrder();
         //if passenger.flightClass = firstClass typ
         int passengerPrice = calcCosts.calculateTotalPassengerPrice(20000, foodPrices);
+        if (flightType == FlightType.FIRSTCLASS) {
+            calcCosts.calculateTotalPassengerPrice(20000, foodPrices);
+        }
+        else if (flightType == FlightType.ECOCLASS) {
+            calcCosts.calculateTotalPassengerPrice(5000, foodPrices);
+        }
         
         calcCosts.printTotalPassengerPrice(customer, passengerPrice);//skriver ut
     }    
@@ -152,19 +174,31 @@ public class UI {
         }
         //menyVal = one.nextInt();
         int income = 0;
+        int incomeEconomy = 0;
         switch (userSelection) {//menyVal
             case 0:
                 System.exit(0);
             case 1: income = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats());//Airline income;
-                    calcCosts.printAirlineIncome(income);
+                    incomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats());
+                    calcCosts.printAirlineIncome(income + incomeEconomy);
                     break;
-            case 2: income = calcCosts.calculateAirlineIncome(arrayPass);//Airline income;
-                    calcCosts.printAirlineIncome(income);
-                    int profit = calcCosts.calculateAirlineProfit(income);//Airline profit;
+            case 2: income = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats());
+                    incomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats());
+                    calcCosts.printAirlineIncome(income + incomeEconomy);
+                    int profit = calcCosts.calculateAirlineProfit(income + incomeEconomy);//Airline profit;
                     calcCosts.printAirlineProfit(profit);
                     break;
-            case 9: //Show Airplane info();
+            case 9: //go back to previous menu
                     break;                       
+        }
+    }
+    
+    private void printFoodMenu(FlightType flType) {
+        if (flType == FlightType.FIRSTCLASS) {
+            
+        }
+        else if (flType == FlightType.ECOCLASS) {
+            
         }
     }
 }
