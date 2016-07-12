@@ -16,6 +16,7 @@ import java.util.Map.Entry;
 public class Passenger {   
     
   private int passengerID;
+    private FlightType ft;
     private String fName;
     private String lName;
     private int personalNr;
@@ -37,15 +38,31 @@ public class Passenger {
     }
 
     //alt+Insert för att auto-generate 
-    public Passenger(String fName, String lName, int personalNr, String phonenumber, GenderType gender, Boolean eat) {
+    public Passenger(FlightType ft, Boolean eat, String fName, String lName, int personalNr, String phonenumber, GenderType gender) {
+        this.ft = ft;
+        this.eat = eat;
         this.fName = fName;
         this.lName = lName;
         this.personalNr = personalNr;
         this.phonenumber = phonenumber;
         this.gender = gender;
-        this.eat = eat;
+        
     }
 
+    public FlightType getFt() {
+        return ft;
+    }
+
+    public GenderType getGender() {
+        return gender;
+    }
+
+    public Boolean getEat() {
+        return eat;
+    }
+
+    
+    
     public int getPassengerID() {
         return passengerID;
     }

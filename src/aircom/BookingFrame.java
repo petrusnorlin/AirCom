@@ -165,7 +165,43 @@ public class BookingFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+        FlightType ft;
+        Boolean eat;
+        String fname;
+        String lname;
+        int persnr;
+        String phonenr;
+        String emailadr;
+        GenderType gt;
+        
+        
+        if(jRadioButton1stC.isSelected())
+        {
+        ft = FlightType.FIRSTCLASS;
+        }
+        if(jRadioButtonEcoCl.isSelected())
+        {
+        ft =FlightType.ECOCLASS;
+        }
+        if(jCheckBoxForFood.isSelected() == true)
+        {
+            eat = true;
+        }
+        else
+        {   
+            eat= false;            
+        }
+        fname= jTextField_FirstName.getText();
+        lname = jTextField_LastName.getText();  
+        persnr= (int)(Double.parseDouble(jTextField_PersonalIdentityNr.getText()));
+        persnr= (int)(Double.parseDouble(jTextField_PersonalIdentityNr.getText()));
+        
+        
+        
+            
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
