@@ -66,6 +66,7 @@ public class UI {
         
         Passenger customer = new Passenger(firstName, surName, persNr, phoneNr);
         
+        
         //calculate and print total price
         int foodPrices = 215;//köper mat för 215 kr
         int passengerPrice = calcCosts.calculateTotalPassengerPrice(20000, foodPrices);
