@@ -23,8 +23,32 @@ public class Passenger {
     private String phonenumber;
     private GenderType gender;
     private Boolean eat;
+    private String choseFood;
     
     HashMap<Food, Integer> chosenFood = new HashMap<Food, Integer>();
+
+    //public void setChosenFood(HashMap<Food, Integer> chosenFood) {
+    public void setChosenFood(int menuChoice, FlightType flightType) {
+        
+        if (flightType == FlightType.FIRSTCLASS && menuChoice == 1){
+            choseFood = "VeggieLasagne";}
+        else if(flightType == FlightType.FIRSTCLASS && menuChoice == 2){
+            choseFood = "Mediterranean sallad";}
+        else if(flightType == FlightType.FIRSTCLASS && menuChoice == 3){
+            choseFood = "Beanburger de Lux";}
+        else if(flightType == FlightType.FIRSTCLASS && menuChoice == 4){
+            choseFood = "Marinade tofu with roasted veggies";}
+        else if(flightType == FlightType.ECOCLASS && menuChoice == 5){
+            choseFood = "Chili sin carne";}
+        else if(flightType == FlightType.ECOCLASS && menuChoice == 6){
+            choseFood = "Broccoli soup";}
+        else if(flightType == FlightType.ECOCLASS && menuChoice == 7){
+            choseFood = "Club Sandwich";}
+        else if(flightType == FlightType.ECOCLASS && menuChoice == 8){
+            choseFood = "nudel wok";}
+                
+        this.choseFood = choseFood;
+    }
     
     public int calculateFoodOrder()
     {

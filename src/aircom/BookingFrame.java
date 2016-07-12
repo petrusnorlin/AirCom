@@ -5,13 +5,16 @@
  */
 package aircom;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author User
  */
 public class BookingFrame extends javax.swing.JFrame {
 
-    String Fname;
+    ArrayList<Passenger> passengerlist = new ArrayList<Passenger>();
+    Passenger p;
     /**
      * Creates new form BookingFrame
      */
@@ -166,14 +169,14 @@ public class BookingFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        FlightType ft;
+        FlightType ft = null;
         Boolean eat;
         String fname;
         String lname;
         int persnr;
         String phonenr;
         String emailadr;
-        GenderType gt;
+        GenderType gt = null;
         
         
         if(jRadioButton1stC.isSelected())
@@ -192,10 +195,36 @@ public class BookingFrame extends javax.swing.JFrame {
         {   
             eat= false;            
         }
+        
         fname= jTextField_FirstName.getText();
-        lname = jTextField_LastName.getText();  
-        persnr= (int)(Double.parseDouble(jTextField_PersonalIdentityNr.getText()));
-        persnr= (int)(Double.parseDouble(jTextField_PersonalIdentityNr.getText()));
+        lname = jTextField_LastName.getText();                
+        persnr = (Integer.parseInt(jTextField_PersonalIdentityNr.getText()));
+        phonenr = jTextField_MobileNr.getText();
+        emailadr = jTextField_EmailAdr.getText();
+        
+        if(jRadioButtonFemale.isSelected())
+        {
+        gt = GenderType.FEMALE;
+        }
+        if (jRadioButtonMale.isSelected())
+        {
+        gt = GenderType.MALE;
+        }
+        if(jRadioButtonOther.isSelected())
+        {
+        gt = GenderType.OTHER;
+        }
+        
+        p = new Passenger(ft, eat, fname, lname, persnr, phonenr, gt);
+        passengerlist.add(p);
+        
+        for (Passenger passenger : passengerlist) {
+            System.out.println(passenger);
+            
+        }
+        
+        
+        //persnr= (int)(Double.parseDouble(jTextField_PersonalIdentityNr.getText()));
         
         
         
