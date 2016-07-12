@@ -10,7 +10,7 @@ import java.util.Iterator;
 /**
  *
  * @author Jimmy
- * Main-klassen
+ * Main-class
  */
 public class AirCom {
 
@@ -21,18 +21,25 @@ public class AirCom {
         
         System.out.println("Welcome to AirCom!");
         
-        printFirstClassMenu(FoodMenu.firstClassMenu);
+        
+       System.out.println("Menu for 1st Class passengers:");  
+      printFoodMenu(FoodMenu.firstClassMenu);
+       System.out.println();
+       System.out.println("Menu for ECO Class passengers:");
+      printFoodMenu(FoodMenu.ecoClassMenu);
 
    
         UI ui = new UI();
         ui.printMenu();
     }
-    public static void printFirstClassMenu(HashMap mp) {
+    public static void printFoodMenu(HashMap mp) {
         Iterator it = mp.entrySet().iterator();
     while (it.hasNext()) {
         HashMap.Entry pair = (HashMap.Entry)it.next();
         System.out.println(pair.getKey() + " price: " + pair.getValue() + "kr");
         //System.out.println(((Food)pair.getKey()).getFoodItem() + " price: " + pair.getValue()); //när jag inte overridar toString()
     }
+    
+    
 }
 }
