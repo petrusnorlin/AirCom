@@ -14,9 +14,8 @@ import java.util.ArrayList;
 public class Airplane {
     
     private String planeID;
-     
-    ArrayList<Seat> firstClassSeats;
-    ArrayList<Seat> economyClassSeats;
+    private ArrayList<Seat> firstClassSeats;
+    private ArrayList<Seat> economyClassSeats;
     //ArrayList
     
     public  Airplane() {
@@ -25,6 +24,7 @@ public class Airplane {
     }
 
     //jag la till 3 get-metoder då jag behöver listorna i UI(Jimmy)
+    //De verkade redan finnas, tog bort dessa nu  (Petrus)
     public String getPlaneID() {
         return planeID;
     }
@@ -70,6 +70,23 @@ public class Airplane {
         }
         return -1;
     }    
+
+
+
+    public void setPlaneID(String planeID) {
+        this.planeID = planeID;
+    }
+
+
+
+    public void setFirstClassSeats(ArrayList<Seat> firstClassSeats) {
+        this.firstClassSeats = firstClassSeats;
+    }
+
+
+    public void setEconomyClassSeats(ArrayList<Seat> economyClassSeats) {
+        this.economyClassSeats = economyClassSeats;
+    }
     
     
 }

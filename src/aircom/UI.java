@@ -44,40 +44,51 @@ public class UI {
     
     public void printMainMenu() {
         Scanner one = new Scanner(System.in);
-        int menyVal;
-        //while(menyVal != 7){
-        System.out.println("Welcome to AirCom!");
-        System.out.println();
-        System.out.println("What would you like to do?");
-        System.out.println();
-        System.out.println("1) Book a trip");
-        System.out.println("2) Airline info");
-        System.out.println("3) Show Airplane info");
-        System.out.println("4) Take off Airplane");
-        System.out.println();
-        System.out.println("0) Exit AirCom");
-        
-        menyVal = one.nextInt();
-        switch (menyVal) {
-            case 0:
-                System.exit(0);
-            case 1: printMenu();//Book a trip;
-                break;
-            case 2: airlineInfo();//Airline info;
-                break;
-            case 3: //Show Airplane info();
-                break;
-            case 4: //Take off Airplane();
-                break;            
+        int menyVal = 1;
+        while(menyVal != 0){
+            //System.out.println("Welcome to AirCom!");
+            System.out.println();
+            System.out.println("What would you like to do?");
+            System.out.println();
+            System.out.println("1) Book a trip");
+            System.out.println("2) Airline info");
+            System.out.println("3) Show Airplane info");
+            System.out.println("4) Take off Airplane");
+            System.out.println();
+            System.out.println("0) Exit AirCom");
+
+            menyVal = one.nextInt();
+            switch (menyVal) {
+                case 0:
+                    System.exit(0);
+                case 1:
+                    printBookMenu();//Book a trip;
+                    break;
+                case 2:
+                    airlineInfo();//Airline info;
+                    break;
+                case 3: //Show Airplane info();
+                    break;
+                case 4: //Take off Airplane();
+                    break;
+                default:
+                    System.out.println("Please type number 0-4 only");
+            }
         }
     }
     
-    public void printMenu() {
-        System.out.println("Welcome to AirCom!");
+    public void printBookMenu() {
+        //System.out.println("Welcome to AirCom!");
+        System.out.println();
         
         System.out.println("Where would you like to go?");
         //TODO: read in the destination
         //Airplane.setDestination = ...
+        System.out.println("1. Tokyo");
+        System.out.println("2. New York");
+        System.out.println("3. Calcutta");
+        System.out.println("4. London");
+        System.out.println("5. Melbourne");
         dest = sc.nextLine();//next?
         
         System.out.println("Would you like to travel in first class['F'] or economy class['E']?");
@@ -96,6 +107,7 @@ public class UI {
         //...if the other class has a free seat.
         //...otherwise quit        
         
+        System.out.println();
         System.out.println("Would you like to eat on the plane (y or n)?");
         eatReply = sc.nextLine();//läsa in till variabel
         //if (sc.equals("Y") || sc.equals("y")) {//equalsIgnoreCase()
@@ -113,12 +125,15 @@ public class UI {
                 foodSelection = printFoodMenu(flightType);
             }
         
+        System.out.println();
         System.out.println("What is your first name?");        
         firstName = sc.nextLine();
         
+        System.out.println();
         System.out.println("What is your surname?");
         surName = sc.nextLine();
         
+        System.out.println();
         System.out.println("What is your gender? ([M]ale, [F]emale or [O]ther)");
         //TODO: register gender
         //gender = ...//if-satser...?
@@ -135,19 +150,31 @@ public class UI {
         }
         //else you wrote something wrong?
         
+        System.out.println();
         System.out.println("What is your personal number?");
         persNr = sc.nextInt();
+        sc.nextLine();
         
+        System.out.println();
         System.out.println("What is your phone number?");
         phoneNr = sc.nextLine();
+        //System.out.println();
         
-        Passenger customer = new Passenger(flightType, eat, firstName, surName, persNr, phoneNr, gender);
+        Passenger customer = new Passenger(flightType, eat, firstName, surName, persNr, phoneNr, gender);//exception?
         
         customer.setChosenFood(foodSelection, flightType);
+        int foodPrices = 0;
+        if (flightType == FlightType.FIRSTCLASS) {//'FoodMenu.firstClassMenu.get(customer.choseFood)' nedan, tar bort tillfälligt
+            foodPrices = 390;//getChoseFood()//exception
+        }
+        else if (flightType == FlightType.ECOCLASS) {//FoodMenu.ecoClassMenu.get(customer.choseFood) tillfälligt borttagit
+            foodPrices = 190;//getChoseFood()//exception
+        }
+        
         int foodPrices = FoodMenu.firstClassMenuOld.get(customer.chosenFood);//getChoseFood()
         //calculate and print total price
         //int foodPrices = 215;//köper mat för 215 kr
-        foodPrices = customer.calculateFoodOrder();
+        //foodPrices = customer.calculateFoodOrder();
         //if passenger.flightClass = firstClass typ
         int passengerPrice = calcCosts.calculateTotalPassengerPrice(20000, foodPrices);
         if (flightType == FlightType.FIRSTCLASS) {

@@ -39,10 +39,10 @@ public class CalculateCosts {
         
         //for (Passenger pass : arrayPass) {
         for (Seat chair : arrayPass) {
-            if (chair.seatedPassenger.getFt() == FlightType.FIRSTCLASS) {
+            if (chair.getSeatedPassenger().getFt() == FlightType.FIRSTCLASS) {
                 ticketPrice = 20000;
             }
-            else if (chair.seatedPassenger.getFt() == FlightType.ECOCLASS) {
+            else if (chair.getSeatedPassenger().getFt() == FlightType.ECOCLASS) {
                 ticketPrice = 5000;
             }
             
@@ -51,7 +51,7 @@ public class CalculateCosts {
             
             //pass.planeClass
             //sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(chair.seatedPassenger.getFt() * sumPassengerPrices);
-            sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, chair.seatedPassenger.calculateFoodOrder());
+            sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, chair.getSeatedPassenger().calculateFoodOrder());
             
         }
         
