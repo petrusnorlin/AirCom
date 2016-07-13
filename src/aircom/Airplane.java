@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Airplane {
     
     private String planeID;
+     
     ArrayList<Seat> firstClassSeats;
     ArrayList<Seat> economyClassSeats;
     //ArrayList

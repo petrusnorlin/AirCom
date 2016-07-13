@@ -39,5 +39,10 @@ public class FoodMenu {
        ecoClassMenu.put(new Food("nudel wok"), 140);
        
            }
+   
+   
+   
+   
+   
     
 }

@@ -21,6 +21,18 @@ public class BookingFrame extends javax.swing.JFrame {
     public BookingFrame() {
         
         initComponents();
+   java.awt.event.MouseAdapter mouseAdapter=   new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBoxForFood.setEnabled(true);
+                jTextField_FirstName.setEnabled(true);
+                jTextField_LastName.setEnabled(true);
+            }
+        };
+         jRadioButton1stC.addMouseListener(mouseAdapter);
+         jCheckBoxForFood.addMouseListener(mouseAdapter);
+         jTextField_FirstName.addMouseListener(mouseAdapter);
+         jTextField_LastName.addMouseListener(mouseAdapter);
+         
         
     }
 
@@ -61,12 +73,19 @@ public class BookingFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
+        jLabelRequiredfn = new javax.swing.JLabel();
+        jLabelRequiredCl = new javax.swing.JLabel();
+        jLabelRequiredln = new javax.swing.JLabel();
+        jLabelRequiredpnr = new javax.swing.JLabel();
+        jLabelRequiredmnr = new javax.swing.JLabel();
+        jLabelRequiredMail = new javax.swing.JLabel();
+        jLabelRequiredGender = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Jokerman", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel1.setForeground(new java.awt.Color(0, 153, 204));
         jLabel1.setText("Welcome to AirCom!");
         jLabel1.setToolTipText("");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
@@ -95,37 +114,45 @@ public class BookingFrame extends javax.swing.JFrame {
         jLabel4.setText("Firstname:");
         jLabel4.setToolTipText("");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+
+        jTextField_LastName.setEnabled(false);
         getContentPane().add(jTextField_LastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 230, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Lastname:");
         jLabel5.setToolTipText("");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
+
+        jTextField_FirstName.setEnabled(false);
         getContentPane().add(jTextField_FirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 230, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Gender:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, -1, -1));
 
         buttonGroup2.add(jRadioButtonFemale);
         jRadioButtonFemale.setText("Female");
         jRadioButtonFemale.setToolTipText("");
-        getContentPane().add(jRadioButtonFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, -1, -1));
+        jRadioButtonFemale.setEnabled(false);
+        getContentPane().add(jRadioButtonFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 480, -1, -1));
 
         buttonGroup2.add(jRadioButtonMale);
         jRadioButtonMale.setText("Male");
-        getContentPane().add(jRadioButtonMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, -1, -1));
+        jRadioButtonMale.setEnabled(false);
+        getContentPane().add(jRadioButtonMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, -1, -1));
 
         buttonGroup2.add(jRadioButtonOther);
         jRadioButtonOther.setText("Other");
         jRadioButtonOther.setToolTipText("");
-        getContentPane().add(jRadioButtonOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, -1, -1));
+        jRadioButtonOther.setEnabled(false);
+        getContentPane().add(jRadioButtonOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Personal Identity Nr:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
         jTextField_PersonalIdentityNr.setToolTipText("");
+        jTextField_PersonalIdentityNr.setEnabled(false);
         getContentPane().add(jTextField_PersonalIdentityNr, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 230, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -134,6 +161,7 @@ public class BookingFrame extends javax.swing.JFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
 
         jTextField_MobileNr.setToolTipText("");
+        jTextField_MobileNr.setEnabled(false);
         getContentPane().add(jTextField_MobileNr, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 230, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -142,27 +170,52 @@ public class BookingFrame extends javax.swing.JFrame {
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
 
         jTextField_EmailAdr.setToolTipText("");
+        jTextField_EmailAdr.setEnabled(false);
         getContentPane().add(jTextField_EmailAdr, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 230, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("Make food reservations:");
         jLabel10.setToolTipText("");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, 20));
+
+        jCheckBoxForFood.setEnabled(false);
         getContentPane().add(jCheckBoxForFood, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 40, 40));
 
         jButton1.setText("Next");
         jButton1.setToolTipText("");
+        jButton1.setEnabled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 520, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 630, 30));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aircom/images/paradise.png"))); // NOI18N
         jLabel11.setText("jLabel11");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 350, 80));
+
+        jLabelRequiredfn.setText("jLabel12");
+        getContentPane().add(jLabelRequiredfn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, -1, -1));
+
+        jLabelRequiredCl.setText("jLabel13");
+        getContentPane().add(jLabelRequiredCl, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 50, 20));
+
+        jLabelRequiredln.setText("jLabel12");
+        getContentPane().add(jLabelRequiredln, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, -1));
+
+        jLabelRequiredpnr.setText("jLabel12");
+        getContentPane().add(jLabelRequiredpnr, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, -1, -1));
+
+        jLabelRequiredmnr.setText("jLabel12");
+        getContentPane().add(jLabelRequiredmnr, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, -1));
+
+        jLabelRequiredMail.setText("jLabel12");
+        getContentPane().add(jLabelRequiredMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, -1, -1));
+
+        jLabelRequiredGender.setText("jLabel12");
+        getContentPane().add(jLabelRequiredGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -182,11 +235,15 @@ public class BookingFrame extends javax.swing.JFrame {
         if(jRadioButton1stC.isSelected())
         {
         ft = FlightType.FIRSTCLASS;
+        
+        jCheckBoxForFood.setEnabled(true);
         }
         if(jRadioButtonEcoCl.isSelected())
         {
         ft =FlightType.ECOCLASS;
+        jCheckBoxForFood.setEnabled(true);
         }
+        
         if(jCheckBoxForFood.isSelected() == true)
         {
             eat = true;
@@ -196,7 +253,9 @@ public class BookingFrame extends javax.swing.JFrame {
             eat= false;            
         }
         
+        if(jTextField_FirstName.)
         fname= jTextField_FirstName.getText();
+        
         lname = jTextField_LastName.getText();                
         persnr = (Integer.parseInt(jTextField_PersonalIdentityNr.getText()));
         phonenr = jTextField_MobileNr.getText();
@@ -286,6 +345,13 @@ public class BookingFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelRequiredCl;
+    private javax.swing.JLabel jLabelRequiredGender;
+    private javax.swing.JLabel jLabelRequiredMail;
+    private javax.swing.JLabel jLabelRequiredfn;
+    private javax.swing.JLabel jLabelRequiredln;
+    private javax.swing.JLabel jLabelRequiredmnr;
+    private javax.swing.JLabel jLabelRequiredpnr;
     private javax.swing.JRadioButton jRadioButton1stC;
     private javax.swing.JRadioButton jRadioButtonEcoCl;
     private javax.swing.JRadioButton jRadioButtonFemale;
