@@ -35,7 +35,7 @@ public class AirCom {
         UI ui2 = new UI(plane);
         //ui.printMenu();
         System.out.println();
-        ui2.printMenu();
+        ui2.printMainMenu();
     }
     public static void printFoodMenu(HashMap mp) {
         Iterator it = mp.entrySet().iterator();
