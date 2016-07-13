@@ -26,15 +26,13 @@ public class Passenger {
     private Boolean eat;
     private String choseFood;
     
-
-    
+   
     ArrayList<Food> foodOrder = new ArrayList<Food>();
 
     public String getChoseFood() {
         return choseFood;
     }
-    
-    //public void setChosenFood(HashMap<Food, Integer> chosenFood) {
+     
     public void setChosenFood(int menuChoice, FlightType flightType) {
         
         if (flightType == FlightType.FIRSTCLASS && menuChoice == 1){
@@ -55,11 +53,9 @@ public class Passenger {
             choseFood = "nudel wok";}
                 
         this.choseFood = choseFood;
-    }
+    }       
     
-       
-    
-    public int calculateFoodOrder()
+    public int calculateFoodOrder(ArrayList a)
     {
         int sum = 0;
         for (Food food : foodOrder) {
