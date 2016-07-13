@@ -7,10 +7,8 @@ package aircom;
 
 /**
  *
- * @author Mtilla
+ * @author User
  */
-public enum DestinationType{
-    
-    HONOLULU, TONGA, FIJI
-    
+public enum PlaneStateType {
+    PREPAIR,INAIR,LANDED
 }

@@ -29,7 +29,7 @@ public class AirCom {
         printFoodMenu(FoodMenu.ecoClassMenuOld);
 
         //la jag(Jimmy) till
-        Airplane plane = new Airplane();
+        AirplanePetrus plane = new AirplanePetrus();
         
         //UI ui = new UI();
         UI ui2 = new UI(plane);

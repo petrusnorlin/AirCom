@@ -5,6 +5,7 @@
  */
 package aircom;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -26,7 +27,8 @@ public class Passenger {
     private String choseFood;
     
 
-    HashMap<Food, Integer> chosenFood = new HashMap<Food, Integer>();
+    
+    ArrayList<Food> foodOrder = new ArrayList<Food>();
 
     public String getChoseFood() {
         return choseFood;
@@ -55,16 +57,17 @@ public class Passenger {
         this.choseFood = choseFood;
     }
     
+       
+    
     public int calculateFoodOrder()
     {
         int sum = 0;
-        Iterator it = chosenFood.entrySet().iterator();
-      while (it.hasNext()) {
-         Entry pair = (Entry)it.next();
-          sum += (int)pair.getValue();        
-      }
-      return sum;
+        for (Food food : foodOrder) {
+           sum += food.getPrice(); 
+        }
+        return sum;
     }
+       
 
     //alt+Insert för att auto-generate 
     public Passenger(FlightType ft, Boolean eat, String fName, String lName, int personalNr, String phonenumber, GenderType gender) {
@@ -88,9 +91,7 @@ public class Passenger {
 
     public Boolean getEat() {
         return eat;
-    }
-
-    
+    }   
     
     public int getPassengerID() {
         return passengerID;
@@ -119,6 +120,19 @@ public class Passenger {
     @Override
     public String toString() {
         return fName + " " + lName;
+    }
+    
+    HashMap<Food, Integer> chosenFood = new HashMap<Food, Integer>();//OBS!! Tillhör gamla HashMap food
+    
+    public int calculateChosenFoods()//OBS!! Tillhör gamla HashMap food
+    {
+        int sum = 0;
+        Iterator it = chosenFood.entrySet().iterator();
+      while (it.hasNext()) {
+         Entry pair = (Entry)it.next();
+          sum += (int)pair.getValue();        
+      }
+      return sum;
     }
       
 }

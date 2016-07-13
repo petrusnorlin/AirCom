@@ -15,9 +15,9 @@ public class BookingFrame extends javax.swing.JFrame {
 
     ArrayList<Passenger> passengerlist = new ArrayList<Passenger>();
     Passenger p;
-    AirplaneNew air1;
-    AirplaneNew air2;
-    AirplaneNew air3;
+    Airplane air1;
+    Airplane air2;
+    Airplane air3;
     
     /**
      * Creates new form BookingFrame
