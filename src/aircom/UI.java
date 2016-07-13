@@ -32,6 +32,8 @@ public class UI {
     String eatReply = "";
     boolean eat = false;
     int foodSelection = 0;
+    ArrayList<Integer> foodSelections = new ArrayList<Integer>();
+    int totalFoodPrice = 0;
     
     CalculateCosts calcCosts = new CalculateCosts();    
     
@@ -123,7 +125,8 @@ public class UI {
             //TODO: present list of food items
             //TODO: read in choices by the users
             if (eat == true) {
-                foodSelection = printFoodMenu(flightType);
+                //foodSelection = printFoodMenu(flightType);
+                foodSelections = printFoodMenu(flightType);
             }
         
         System.out.println();
@@ -162,14 +165,40 @@ public class UI {
         //System.out.println();
         
         Passenger customer = new Passenger(flightType, eat, firstName, surName, persNr, phoneNr, gender);//exception?
+                
+        ArrayList<Food> foodChoices = new ArrayList<Food>();
+        //int totalFoodPrice = 0;//flyttad till början av filen
+        //Food f = new Food(economyClassFood.get(reader.nextInt()-1).getFoodItem());
+        
+        //foodSelections innehåller vad passagerarna valde att äta o dricka...
+        //...i meny-listorna
+        if (flightType == FlightType.FIRSTCLASS) {
+            ArrayList<Food> firstClassFood = FoodMenu.getFirstClassMenu();
+            //foodSelections;
+            for (int a = 0; a < foodSelections.size(); a++) {
+                totalFoodPrice = totalFoodPrice + firstClassFood.get(foodSelections.get(a - 1)).getPrice();
+                //lägger till mat folk beställt i en lista
+                foodChoices.add(firstClassFood.get(foodSelections.get(a - 1)));
+            }
+        }
+        else if (flightType == FlightType.ECOCLASS) {
+            ArrayList<Food> economyClassFood = FoodMenu.getEcoClassMenu();
+            //foodSelections;
+            for (int a = 0; a < foodSelections.size(); a++) {
+                totalFoodPrice = totalFoodPrice + economyClassFood.get(foodSelections.get(a - 1)).getPrice();
+                //lägger till mat folk beställt i en lista
+                foodChoices.add(economyClassFood.get(foodSelections.get(a - 1)));
+            }
+        }
         
         customer.setChosenFood(foodSelection, flightType);
         int foodPrices = 0;
         if (flightType == FlightType.FIRSTCLASS) {//'FoodMenu.firstClassMenu.get(customer.choseFood)' nedan, tar bort tillfälligt
-            foodPrices = FoodMenu.getFirstClassMenu().;//390;//getChoseFood()//exception
+            foodPrices = totalFoodPrice;// 200;//FoodMenu.;
+            //FoodMenu.getFirstClassMenu().;//390;//getChoseFood()//exception
         }
         else if (flightType == FlightType.ECOCLASS) {//FoodMenu.ecoClassMenu.get(customer.choseFood) tillfälligt borttagit
-            foodPrices = 190;//getChoseFood()//exception
+            foodPrices = totalFoodPrice;//190;//getChoseFood()//exception
         }
         
         //int foodPrices = FoodMenu.firstClassMenuOld.get(customer.chosenFood);//getChoseFood()
@@ -210,12 +239,12 @@ public class UI {
         switch (userSelection) {//menyVal
             case 0:
                 System.exit(0);
-            case 1: income = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats());//Airline income;
-                    incomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats());
+            case 1: income = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);//Airline income;
+                    incomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats(), this);
                     calcCosts.printAirlineIncome(income + incomeEconomy);
                     break;
-            case 2: income = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats());
-                    incomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats());
+            case 2: income = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);
+                    incomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats(), this);
                     calcCosts.printAirlineIncome(income + incomeEconomy);
                     int profit = calcCosts.calculateAirlineProfit(income + incomeEconomy);//Airline profit;
                     calcCosts.printAirlineProfit(profit);
@@ -285,6 +314,12 @@ public class UI {
             //foodChoice = reader.nextInt();            
         }
         return foodChoices;//foodChoice
+    }
+    
+    //temporär metod för att komma åt matpriserna för det passagerarna beställt
+    //ska nog ligga i annan klass
+    public int getTotalFoodPrice() {
+        return totalFoodPrice;
     }
 }
 
