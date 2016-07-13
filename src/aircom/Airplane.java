@@ -24,6 +24,7 @@ public class Airplane {
     }
 
     //jag la till 3 get-metoder då jag behöver listorna i UI(Jimmy)
+    //De verkade redan finnas, tog bort dessa nu  (Petrus)
     public String getPlaneID() {
         return planeID;
     }
