@@ -28,6 +28,9 @@ public class AirCom {
         System.out.println();
         System.out.println("Menu for ECO Class passengers:");
         printFoodMenu(FoodMenu.getEcoClassMenu());
+        System.out.println();
+        System.out.println();
+        printFoodMenuOld(FoodMenu.getEcoClassMenuOld());
 
         //la jag(Jimmy) till
         //AirplanePetrus plane = new AirplanePetrus();
@@ -38,21 +41,21 @@ public class AirCom {
         //System.out.println();
         //ui2.printMainMenu();
     }
-    public static void printFoodMenu(ArrayList al)
+    public static void printFoodMenu(ArrayList<Food> al)
     {
-        for (Object o : al) {
-            System.out.println(o + "kr");
+        for (Food f : al) {
+            System.out.println(f.getFoodItem() + " " + f.getPrice() + "kr");
         }
  
     }
-//    
-//    public static void printFoodMenuOld(HashMap mp) {
-//        Iterator it = mp.entrySet().iterator();
-//        while (it.hasNext()) {
-//            HashMap.Entry pair = (HashMap.Entry) it.next();
-//            System.out.println(pair.getKey() + " price: " + pair.getValue() + "kr");
-//            //System.out.println(((Food)pair.getKey()).getFoodItem() + " price: " + pair.getValue()); //när jag inte overridar toString()
-//        }
-//
-//    }
+    
+    public static void printFoodMenuOld(HashMap mp) {
+        Iterator it = mp.entrySet().iterator();
+        while (it.hasNext()) {
+            HashMap.Entry pair = (HashMap.Entry) it.next();//it.next plockar fram key o value i variablen
+            System.out.println(pair.getKey() + " price: " + pair.getValue() + "kr");
+            //System.out.println(((Food)pair.getKey()).getFoodItem() + " price: " + pair.getValue()); //när jag inte overridar toString()
+        }
+
+    }
 }
