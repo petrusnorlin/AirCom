@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class Airplane {
     
     private String planeID;
-    ArrayList<Seat> firstClassSeats;
-    ArrayList<Seat> economyClassSeats;
+    private ArrayList<Seat> firstClassSeats;
+    private ArrayList<Seat> economyClassSeats;
     //ArrayList
     
     public  Airplane() {
@@ -56,6 +56,30 @@ public class Airplane {
         }
         return -1;
     }    
+
+    public String getPlaneID() {
+        return planeID;
+    }
+
+    public void setPlaneID(String planeID) {
+        this.planeID = planeID;
+    }
+
+    public ArrayList<Seat> getFirstClassSeats() {
+        return firstClassSeats;
+    }
+
+    public void setFirstClassSeats(ArrayList<Seat> firstClassSeats) {
+        this.firstClassSeats = firstClassSeats;
+    }
+
+    public ArrayList<Seat> getEconomyClassSeats() {
+        return economyClassSeats;
+    }
+
+    public void setEconomyClassSeats(ArrayList<Seat> economyClassSeats) {
+        this.economyClassSeats = economyClassSeats;
+    }
     
     
 }
