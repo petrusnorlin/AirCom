@@ -13,7 +13,14 @@ import java.util.HashMap;
  * @author Mtilla
  */
 public class FoodMenu {
-    
+
+    public static HashMap<Food, Integer> getFirstClassMenu() {
+        return firstClassMenu;
+    }
+
+    public static HashMap<Food, Integer> getEcoClassMenu() {
+        return ecoClassMenu;
+    }
     
    static final HashMap<Food, Integer> firstClassMenu = new HashMap<Food, Integer>();  
    static {
@@ -29,8 +36,13 @@ public class FoodMenu {
        ecoClassMenu.put(new Food("Chili sin carne"), 130);
        ecoClassMenu.put(new Food("Broccoli soup"), 120);
        ecoClassMenu.put(new Food("Club Sandwich"), 110);
-       ecoClassMenu.put(new Food("fish n chips"), 140);
+       ecoClassMenu.put(new Food("nudel wok"), 140);
        
            }
+   
+   
+   
+   
+   
     
 }
