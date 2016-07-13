@@ -141,13 +141,13 @@ public class UI {
         System.out.println("What is your phone number?");
         phoneNr = sc.nextLine();
         
-        Passenger customer = new Passenger(flightType, eat, firstName, surName, persNr, phoneNr, gender);
+        Passenger customer = new Passenger(flightType, eat, firstName, surName, persNr, phoneNr, gender);//exception?
         
         customer.setChosenFood(foodSelection, flightType);
-        int foodPrices = FoodMenu.firstClassMenu.get(customer.chosenFood);//getChoseFood()
+        int foodPrices = FoodMenu.firstClassMenu.get(customer.getChoseFood());//getChoseFood()//exception
         //calculate and print total price
         //int foodPrices = 215;//köper mat för 215 kr
-        foodPrices = customer.calculateFoodOrder();
+        //foodPrices = customer.calculateFoodOrder();
         //if passenger.flightClass = firstClass typ
         int passengerPrice = calcCosts.calculateTotalPassengerPrice(20000, foodPrices);
         if (flightType == FlightType.FIRSTCLASS) {
