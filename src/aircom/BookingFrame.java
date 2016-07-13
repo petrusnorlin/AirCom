@@ -253,7 +253,7 @@ public class BookingFrame extends javax.swing.JFrame {
             eat= false;            
         }
         
-        if(jTextField_FirstName.)
+        //if(jTextField_FirstName.)//kommenterat tillfälligt av Jimmy
         fname= jTextField_FirstName.getText();
         
         lname = jTextField_LastName.getText();                

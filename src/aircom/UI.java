@@ -144,7 +144,14 @@ public class UI {
         Passenger customer = new Passenger(flightType, eat, firstName, surName, persNr, phoneNr, gender);//exception?
         
         customer.setChosenFood(foodSelection, flightType);
-        int foodPrices = FoodMenu.firstClassMenu.get(customer.getChoseFood());//getChoseFood()//exception
+        int foodPrices = 0;
+        if (flightType == FlightType.FIRSTCLASS) {
+            foodPrices = FoodMenu.firstClassMenu.get(customer.choseFood);//getChoseFood()//exception
+        }
+        else if (flightType == FlightType.ECOCLASS) {
+            foodPrices = FoodMenu.ecoClassMenu.get(customer.choseFood);//getChoseFood()//exception
+        }
+        
         //calculate and print total price
         //int foodPrices = 215;//köper mat för 215 kr
         //foodPrices = customer.calculateFoodOrder();
