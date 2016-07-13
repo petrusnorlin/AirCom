@@ -176,7 +176,7 @@ public class UI {
             ArrayList<Food> firstClassFood = FoodMenu.getFirstClassMenu();
             //foodSelections;
             for (int a = 0; a < foodSelections.size(); a++) {
-                totalFoodPrice = totalFoodPrice + firstClassFood.get(foodSelections.get(a - 1)).getPrice();
+                totalFoodPrice = totalFoodPrice + firstClassFood.get(foodSelections.get(a - 1)).getPrice();//ger fel?
                 //lägger till mat folk beställt i en lista
                 foodChoices.add(firstClassFood.get(foodSelections.get(a - 1)));
             }
@@ -255,10 +255,12 @@ public class UI {
     }
     
     private ArrayList<Integer> printFoodMenu(FlightType flType) {//int
-        ArrayList<Integer> foodChoices = new ArrayList<Integer>();
+        ArrayList<Integer> foodChoices = new ArrayList<>();
         int menyVal = 1;
         //Scanner reader = new Scanner(System.in);
         //int foodChoice = 1;
+        System.out.println("Food menu:");
+        System.out.println();
         while(menyVal != 0){
             Scanner reader = new Scanner(System.in);
             if (flType == FlightType.FIRSTCLASS) {
