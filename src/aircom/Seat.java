@@ -10,8 +10,8 @@ package aircom;
  * @author PetrusNorlin
  */
 public class Seat {
-    Integer SeatId;
-    Passenger seatedPassenger;
+    private Integer SeatId;
+    private Passenger seatedPassenger;
     
     public Seat() {
         this.SeatId = null;
@@ -21,6 +21,22 @@ public class Seat {
     public Seat(Integer SeatId, Passenger seatedPassenger) {
         this.SeatId = SeatId;
         this.seatedPassenger = seatedPassenger;
+    }
+
+    public Passenger getSeatedPassenger() {
+        return seatedPassenger;
+    }
+
+    public void setSeatedPassenger(Passenger seatedPassenger) {
+        this.seatedPassenger = seatedPassenger;
+    }
+
+    public Integer getSeatId() {
+        return SeatId;
+    }
+
+    public void setSeatId(Integer SeatId) {
+        this.SeatId = SeatId;
     }
     
 }
