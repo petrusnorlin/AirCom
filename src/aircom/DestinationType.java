@@ -11,6 +11,6 @@ package aircom;
  */
 public enum DestinationType{
     
-    TOKYO, NEWYORK, CALCUTTA, LONDON, MELBOURNE
+    HONOLULU, , CALCUTTA, LONDON, MELBOURNE
     
 }

@@ -144,7 +144,7 @@ public class UI {
         Passenger customer = new Passenger(flightType, eat, firstName, surName, persNr, phoneNr, gender);
         
         customer.setChosenFood(foodSelection, flightType);
-        int foodPrices = FoodMenu.firstClassMenu.get(customer.chosenFood);//getChoseFood()
+        int foodPrices = FoodMenu.firstClassMenuOld.get(customer.chosenFood);//getChoseFood()
         //calculate and print total price
         //int foodPrices = 215;//köper mat för 215 kr
         foodPrices = customer.calculateFoodOrder();
@@ -201,7 +201,7 @@ public class UI {
         Scanner reader = new Scanner(System.in);
         int foodChoice;
         if (flType == FlightType.FIRSTCLASS) {
-            Iterator it = FoodMenu.firstClassMenu.entrySet().iterator();
+            Iterator it = FoodMenu.firstClassMenuOld.entrySet().iterator();
             int i = 0;
             while (it.hasNext()) {
             //for (String food : FoodMenu.firstClassMenu) {
@@ -211,7 +211,7 @@ public class UI {
             }
         }
         else if (flType == FlightType.ECOCLASS) {
-            Iterator it = FoodMenu.ecoClassMenu.entrySet().iterator();
+            Iterator it = FoodMenu.ecoClassMenuOld.entrySet().iterator();
             int i = 0;
             while (it.hasNext()) {
                 i++;

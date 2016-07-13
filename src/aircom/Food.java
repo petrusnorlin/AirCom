@@ -14,9 +14,16 @@ public class Food {
     
     //Contains only one private field
     private String foodItem; 
+    private int price;
+    
 
     //Constructor:
-    public Food(String foodItem) {
+    public Food(String foodItem, int price) {
+        this.foodItem = foodItem;
+        this.price= price;
+    }
+    
+    public Food(String foodItem){
         this.foodItem = foodItem;
     }
     
@@ -26,6 +33,14 @@ public class Food {
     }
     public void setFoodItem(String foodItem) {
         this.foodItem = foodItem;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
     
     //OVERRIDDEN Object methods:

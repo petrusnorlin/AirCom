@@ -23,10 +23,10 @@ public class AirCom {
         
         
         System.out.println("Menu for 1st Class passengers:");  
-        printFoodMenu(FoodMenu.firstClassMenu);
+        printFoodMenu(FoodMenu.firstClassMenuOld);
         System.out.println();
         System.out.println("Menu for ECO Class passengers:");
-        printFoodMenu(FoodMenu.ecoClassMenu);
+        printFoodMenu(FoodMenu.ecoClassMenuOld);
 
         //la jag(Jimmy) till
         Airplane plane = new Airplane();

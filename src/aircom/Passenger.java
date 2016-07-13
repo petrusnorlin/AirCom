@@ -25,6 +25,7 @@ public class Passenger {
     private Boolean eat;
     private String choseFood;
     
+
     HashMap<Food, Integer> chosenFood = new HashMap<Food, Integer>();
 
     public String getChoseFood() {
