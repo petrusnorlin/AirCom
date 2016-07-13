@@ -5,6 +5,7 @@
  */
 package aircom;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 /**
@@ -23,27 +24,35 @@ public class AirCom {
         
         
         System.out.println("Menu for 1st Class passengers:");  
-        printFoodMenu(FoodMenu.firstClassMenuOld);
+        printFoodMenu(FoodMenu.getFirstClassMenu());
         System.out.println();
         System.out.println("Menu for ECO Class passengers:");
-        printFoodMenu(FoodMenu.ecoClassMenuOld);
+        printFoodMenu(FoodMenu.getEcoClassMenu());
 
         //la jag(Jimmy) till
-        Airplane plane = new Airplane();
+        //AirplanePetrus plane = new AirplanePetrus();
         
         //UI ui = new UI();
-        UI ui2 = new UI(plane);
+       // UI ui2 = new UI(plane);
         //ui.printMenu();
-        System.out.println();
-        ui2.printMainMenu();
+        //System.out.println();
+        //ui2.printMainMenu();
     }
-    public static void printFoodMenu(HashMap mp) {
-        Iterator it = mp.entrySet().iterator();
-        while (it.hasNext()) {
-            HashMap.Entry pair = (HashMap.Entry) it.next();
-            System.out.println(pair.getKey() + " price: " + pair.getValue() + "kr");
-            //System.out.println(((Food)pair.getKey()).getFoodItem() + " price: " + pair.getValue()); //när jag inte overridar toString()
+    public static void printFoodMenu(ArrayList al)
+    {
+        for (Object o : al) {
+            System.out.println(o + "kr");
         }
-
+ 
     }
+//    
+//    public static void printFoodMenuOld(HashMap mp) {
+//        Iterator it = mp.entrySet().iterator();
+//        while (it.hasNext()) {
+//            HashMap.Entry pair = (HashMap.Entry) it.next();
+//            System.out.println(pair.getKey() + " price: " + pair.getValue() + "kr");
+//            //System.out.println(((Food)pair.getKey()).getFoodItem() + " price: " + pair.getValue()); //när jag inte overridar toString()
+//        }
+//
+//    }
 }

@@ -19,7 +19,7 @@ public class UI {
     Scanner sc = new Scanner(System.in);
     
     String dest = "";
-    Airplane plane;
+    AirplanePetrus plane;
     
     String flightClass = "";
     FlightType flightType;
@@ -36,10 +36,10 @@ public class UI {
     CalculateCosts calcCosts = new CalculateCosts();    
     
     public UI() {        
-        plane = new Airplane();
+        plane = new AirplanePetrus();
     }
     
-    public UI(Airplane plane) {        
+    public UI(AirplanePetrus plane) {        
         this.plane = plane;
     }
     

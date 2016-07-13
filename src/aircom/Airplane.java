@@ -5,88 +5,42 @@
  */
 package aircom;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
- * @author User
+ * @author Mtilla
  */
+
+
 public class Airplane {
     
-    private String planeID;
-    private ArrayList<Seat> firstClassSeats;
-    private ArrayList<Seat> economyClassSeats;
-    //ArrayList
+    private static FoodMenu food = new FoodMenu(); //Måste vara statisk så statiska arraylistan inte fylls på varje gång konstruktor FoodMenu() körs.
+         
+    private String plane;
+    DestinationType destination;
+    private Seat[] fClassSeats;
+    private Seat[] ecoClassSeats;
+    private LocalDate departure;
+    private LocalDate arrival;
     
-    public  Airplane() {
-        firstClassSeats = new ArrayList<>();
-        economyClassSeats = new ArrayList<>();       
-    }
-
-    //jag la till 3 get-metoder då jag behöver listorna i UI(Jimmy)
-    //De verkade redan finnas, tog bort dessa nu  (Petrus)
-    public String getPlaneID() {
-        return planeID;
-    }
-
-    public ArrayList<Seat> getFirstClassSeats() {
-        return firstClassSeats;
-    }
-
-    public ArrayList<Seat> getEconomyClassSeats() {
-        return economyClassSeats;
-    }
- 
-    public boolean isTherePassengerSpace(FlightClass flightClass) {
-        if (null != flightClass) switch (flightClass) {
-            case FirstClass:
-                //Om FirstClass class lägg upp denna
-                if (firstClassSeats.size()<5)
-                return true;
-            case EconomyClass:
-                //Om economy class lägg upp denna
-                if (economyClassSeats.size()<5)
-                return true;
-            default:
-                return false;//unknown
-        }
-        return false;//om det inte finns plats
-    } 
-    
-    public int addPassengerToSeat(Passenger passenger, FlightClass flightClass) {
-        if (!isTherePassengerSpace(flightClass))//Om det inte finns plats för passaeraren
-            return -1;
-        if (null != flightClass) switch (flightClass) {
-            case FirstClass:
-                //Om FirstClass class lägg upp denna
-                firstClassSeats.add(new Seat( firstClassSeats.size()+1, passenger));
-                return 1;
-            case EconomyClass:
-                //Om economy class lägg upp denna
-                economyClassSeats.add(new Seat( economyClassSeats.size()+1, passenger));
-                return 2;
-            default:
-                return -1;//unknown
-        }
-        return -1;
-    }    
-
-
-
-    public void setPlaneID(String planeID) {
-        this.planeID = planeID;
-    }
-
-
-
-    public void setFirstClassSeats(ArrayList<Seat> firstClassSeats) {
-        this.firstClassSeats = firstClassSeats;
-    }
-
-
-    public void setEconomyClassSeats(ArrayList<Seat> economyClassSeats) {
-        this.economyClassSeats = economyClassSeats;
+    public static FoodMenu getFood() {
+        return food;
     }
     
     
+    
+    
+    public Airplane(String plane, DestinationType destination) {
+        this.destination = destination;
+        this.plane = plane;
+        fClassSeats = new Seat[5];
+        ecoClassSeats = new Seat [5];
+    }
+    
+
+  
 }
+    
+    
