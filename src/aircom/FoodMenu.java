@@ -51,12 +51,12 @@ public class FoodMenu {
     }
     
 
-    public static ArrayList<Food> getFirstClassMenu() {
+    public ArrayList<Food> getFirstClassMenu() {
         return firstClassMenu;
     }
 
 
-    public static ArrayList<Food> getEcoClassMenu() {
+    public ArrayList<Food> getEcoClassMenu() {
         return ecoClassMenu;
     }
 
@@ -64,10 +64,10 @@ public class FoodMenu {
        static final HashMap<Food, Integer> firstClassMenuOld = new HashMap<Food, Integer>();  
   
   static{
-       firstClassMenu.add(new Food("VeggieLasagne", 190));
-       firstClassMenu.add(new Food("Mediterranean sallad", 180));
-       firstClassMenu.add(new Food("Beanburger de Lux", 210));
-       firstClassMenu.add(new Food("Marinade tofu with roasted veggies", 220));
+       firstClassMenuOld.put(new Food("VeggieLasagne"), 190);
+       firstClassMenuOld.put(new Food("Mediterranean sallad"), 180);
+       firstClassMenuOld.put(new Food("Beanburger de Lux"), 210);
+       firstClassMenuOld.put(new Food("Marinade tofu with roasted veggies"), 220);
            }
    
    

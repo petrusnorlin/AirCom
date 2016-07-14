@@ -14,20 +14,24 @@ import java.util.Iterator;
  * Main-class
  */
 public class AirCom {
+    
+    static Airplane air = new Airplane("testplane", DestinationType.TONGA);
 
     /**
      * @param args the command line arguments
      */    
     public static void main(String[] args) {
         
+         
+        
         System.out.println("Welcome to AirCom!");
         
         
         System.out.println("Menu for 1st Class passengers:");  
-        printFoodMenu(FoodMenu.getFirstClassMenu());
-        System.out.println();
+        printFoodMenu(new FoodMenu().getFirstClassMenu());
+        System.out.println(air.getFoodMenu().getFirstClassMenu());
         System.out.println("Menu for ECO Class passengers:");
-        printFoodMenu(FoodMenu.getEcoClassMenu());
+        printFoodMenu(new FoodMenu().getEcoClassMenu());
         System.out.println();
         System.out.println();
         printFoodMenuOld(FoodMenu.getEcoClassMenuOld());

@@ -16,7 +16,7 @@ import java.util.Date;
 
 public class Airplane {
     
-    private static FoodMenu food = new FoodMenu(); //Måste vara statisk så statiska arraylistan inte fylls på varje gång konstruktor FoodMenu() körs.
+    private static FoodMenu foodMenu = new FoodMenu(); //Måste vara statisk så statiska arraylistan inte fylls på varje gång konstruktor FoodMenu() körs.
          
     private String plane;
     DestinationType destination;
@@ -25,8 +25,8 @@ public class Airplane {
     private LocalDate departure;
     private LocalDate arrival;
     
-    public static FoodMenu getFood() {
-        return food;
+    public FoodMenu getFoodMenu() {
+        return foodMenu;
     }
     
     

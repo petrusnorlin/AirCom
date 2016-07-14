@@ -13,11 +13,12 @@ import java.util.ArrayList;
  */
 public class BookingFrame extends javax.swing.JFrame {
 
+    DestinationType[] destinations = {DestinationType.HONOLULU, DestinationType.FIJI, DestinationType.TONGA  };
     ArrayList<Passenger> passengerlist = new ArrayList<Passenger>();
     Passenger p;
-    Airplane air1;
-    Airplane air2;
-    Airplane air3;
+    Airplane air1 = new Airplane("HOLU123", DestinationType.HONOLULU);
+    Airplane air2 = new Airplane("FIJ456", DestinationType.FIJI);
+    Airplane air3 = new Airplane("TON789", DestinationType.TONGA);
     
     /**
      * Creates new form BookingFrame
@@ -85,6 +86,7 @@ public class BookingFrame extends javax.swing.JFrame {
         jLabelRequiredMail = new javax.swing.JLabel();
         jLabelRequiredGender = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jComboBoxSelectDestination = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -104,75 +106,75 @@ public class BookingFrame extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Choose Class:");
         jLabel3.setToolTipText("");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 90, 20));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 90, 20));
 
         buttonGroup1.add(jRadioButton1stC);
         jRadioButton1stC.setText("1st Class");
-        getContentPane().add(jRadioButton1stC, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, -1, -1));
+        getContentPane().add(jRadioButton1stC, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, -1, -1));
 
         buttonGroup1.add(jRadioButtonEcoCl);
         jRadioButtonEcoCl.setText("ECO Class");
         jRadioButtonEcoCl.setToolTipText("");
-        getContentPane().add(jRadioButtonEcoCl, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
+        getContentPane().add(jRadioButtonEcoCl, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Firstname:");
         jLabel4.setToolTipText("");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
-        getContentPane().add(jTextField_LastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 230, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 240, -1, -1));
+        getContentPane().add(jTextField_LastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 230, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Lastname:");
         jLabel5.setToolTipText("");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
-        getContentPane().add(jTextField_FirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 230, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, -1, -1));
+        getContentPane().add(jTextField_FirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 230, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Gender:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 560, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 520, -1, -1));
 
         buttonGroup2.add(jRadioButtonFemale);
         jRadioButtonFemale.setText("Female");
         jRadioButtonFemale.setToolTipText("");
-        getContentPane().add(jRadioButtonFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 560, -1, -1));
+        getContentPane().add(jRadioButtonFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 520, -1, -1));
 
         buttonGroup2.add(jRadioButtonMale);
         jRadioButtonMale.setText("Male");
-        getContentPane().add(jRadioButtonMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 560, -1, -1));
+        getContentPane().add(jRadioButtonMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 520, -1, -1));
 
         buttonGroup2.add(jRadioButtonOther);
         jRadioButtonOther.setText("Other");
         jRadioButtonOther.setToolTipText("");
-        getContentPane().add(jRadioButtonOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 560, -1, -1));
+        getContentPane().add(jRadioButtonOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 520, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Personal Identity Nr:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, -1, -1));
 
         jTextField_PersonalIdentityNr.setToolTipText("");
-        getContentPane().add(jTextField_PersonalIdentityNr, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 230, -1));
+        getContentPane().add(jTextField_PersonalIdentityNr, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, 230, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Mobile phone number:");
         jLabel8.setToolTipText("");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, -1, -1));
 
         jTextField_MobileNr.setToolTipText("");
-        getContentPane().add(jTextField_MobileNr, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 230, -1));
+        getContentPane().add(jTextField_MobileNr, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 230, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Email adress:");
         jLabel9.setToolTipText("");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 440, -1, -1));
 
         jTextField_EmailAdr.setToolTipText("");
-        getContentPane().add(jTextField_EmailAdr, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 230, -1));
+        getContentPane().add(jTextField_EmailAdr, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 230, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("Make food reservations:");
         jLabel10.setToolTipText("");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, 20));
-        getContentPane().add(jCheckBoxForFood, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 40, 40));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, -1, 20));
+        getContentPane().add(jCheckBoxForFood, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 40, 40));
 
         jButton1.setText("Next");
         jButton1.setToolTipText("");
@@ -182,7 +184,7 @@ public class BookingFrame extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 560, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 630, 30));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aircom/images/paradise.png"))); // NOI18N
@@ -190,28 +192,36 @@ public class BookingFrame extends javax.swing.JFrame {
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 350, 80));
 
         jLabelRequiredfn.setText("jLabel12");
-        getContentPane().add(jLabelRequiredfn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
+        getContentPane().add(jLabelRequiredfn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, -1, -1));
 
         jLabelRequiredCl.setText("jLabel13");
-        getContentPane().add(jLabelRequiredCl, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 50, 20));
+        getContentPane().add(jLabelRequiredCl, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 50, 20));
 
         jLabelRequiredln.setText("jLabel12");
-        getContentPane().add(jLabelRequiredln, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, -1, -1));
+        getContentPane().add(jLabelRequiredln, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, -1, -1));
 
         jLabelRequiredpnr.setText("jLabel12");
-        getContentPane().add(jLabelRequiredpnr, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, -1, -1));
+        getContentPane().add(jLabelRequiredpnr, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 340, -1, -1));
 
         jLabelRequiredmnr.setText("jLabel12");
-        getContentPane().add(jLabelRequiredmnr, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, -1, -1));
+        getContentPane().add(jLabelRequiredmnr, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, -1, -1));
 
         jLabelRequiredMail.setText("jLabel12");
-        getContentPane().add(jLabelRequiredMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, -1, -1));
+        getContentPane().add(jLabelRequiredMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 440, -1, -1));
 
         jLabelRequiredGender.setText("jLabel12");
-        getContentPane().add(jLabelRequiredGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, -1, -1));
+        getContentPane().add(jLabelRequiredGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 500, -1, -1));
 
         jLabel12.setText("jLabel12");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, -1, -1));
+
+        jComboBoxSelectDestination.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select destination", "HONOLULU", "FIJI", "TONGA" }));
+        jComboBoxSelectDestination.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSelectDestinationActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBoxSelectDestination, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -289,6 +299,30 @@ public class BookingFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jComboBoxSelectDestinationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelectDestinationActionPerformed
+       if(jComboBoxSelectDestination.getSelectedItem()== "HONOLULU")
+           
+            String SelectedValue = cmb1.getSelectedItem().toString();
+            // Display
+            switch (SelectedValue) {
+            case "RED":
+                txt1.setText("Carmine \nCrimson \nFlame \nFushia \nLava \nMagenta \nMaroon");
+                break;
+            case "YELLOW":
+                txt1.setText("Amber \nApricot \nBeige \nGold \nKhaki \nMustard \nSaffron");
+                break;
+            case "BLUE":
+                txt1.setText("Azure \nCerulean \nCobalt \nCyan \nSky Blue \nIndigo \nSapphire");
+                break;
+            case "GREEN":
+                txt1.setText("Asparagus \nAvocado \nEmerald \nForest Green \nLime \nMint \nOlive");
+                break;
+            default:
+                txt1.setText("");
+            }
+
+    }//GEN-LAST:event_jComboBoxSelectDestinationActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -331,6 +365,7 @@ public class BookingFrame extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBoxForFood;
+    private javax.swing.JComboBox<String> jComboBoxSelectDestination;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
