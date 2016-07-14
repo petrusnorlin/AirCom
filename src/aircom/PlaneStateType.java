@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aircom;
 
 /**
- *
- * @author User
+ * Enumerator för flygplanens olika status
+ * 
+ * @author Joel
+ * @since 2016-07-14
  */
 public enum PlaneStateType {
-    PREPAIR,INAIR,LANDED
+    BOARDING, TAKING_OFF, FLYING, LANDING, DESEMBARKING, EMPTY
 }
