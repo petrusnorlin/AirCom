@@ -32,7 +32,7 @@ public class CalculateCosts {
     }
     
     //public int calculateAirlineIncome(ArrayList<Passenger> arrayPass) {
-    public int calculateAirlineIncome(ArrayList<Seat> arrayPass, UI ui) {
+    public int calculateAirlineIncome(ArrayList<Seat> arrayPass) {
         int sumPassengerPrices = 0;
         int ticketPrice = 0;
         
@@ -51,8 +51,8 @@ public class CalculateCosts {
             
             //pass.planeClass
             //sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(chair.seatedPassenger.getFt() * sumPassengerPrices);
-            sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, ui.getTotalFoodPrice());
-            //'chair.getSeatedPassenger().calculateFoodOrder()' från slutet av ovan
+            sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, chair.getSeatedPassenger().calculateFoodOrder());
+            
         }
         
         return sumPassengerPrices;
