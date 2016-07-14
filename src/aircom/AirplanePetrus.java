@@ -37,13 +37,15 @@ public class AirplanePetrus {
         return economyClassSeats;
     }
  
-    public boolean isTherePassengerSpace(FlightClass flightClass) {
-        if (null != flightClass) switch (flightClass) {
-            case FirstClass:
+    //FlightClass flightClass ändrat av Jimmy till FlightType flightType
+    public boolean isTherePassengerSpace(FlightType flightType) {
+        if (null != flightType) switch (flightType) {
+            case FIRSTCLASS://flightClass bytt till flightType
+                //'FirstClass' bytt till 'FIRSTCLASS'
                 //Om FirstClass class lägg upp denna
                 if (firstClassSeats.size()<5)
                 return true;
-            case EconomyClass:
+            case ECOCLASS://'EconomyClass' bytt till 'ECOCLASS'
                 //Om economy class lägg upp denna
                 if (economyClassSeats.size()<5)
                 return true;
@@ -53,15 +55,16 @@ public class AirplanePetrus {
         return false;//om det inte finns plats
     } 
     
-    public int addPassengerToSeat(Passenger passenger, FlightClass flightClass) {
-        if (!isTherePassengerSpace(flightClass))//Om det inte finns plats för passaeraren
-            return -1;
-        if (null != flightClass) switch (flightClass) {
-            case FirstClass:
+    //FlightClass flightClass har jag(Jimmy) ändrat till 'FlightType flightType'
+    public int addPassengerToSeat(Passenger passenger, FlightType flightType) {
+        if (!isTherePassengerSpace(flightType))//Om det inte finns plats för passaeraren
+            return -1;//'flightClass' var det ovan
+        if (null != flightType) switch (flightType) { //'flightClass' var det innan
+            case FIRSTCLASS://flightClass bytt till flightType
                 //Om FirstClass class lägg upp denna
                 firstClassSeats.add(new Seat( firstClassSeats.size()+1, passenger));
                 return 1;
-            case EconomyClass:
+            case ECOCLASS://'EconomyClass' bytt till 'ECOCLASS'
                 //Om economy class lägg upp denna
                 economyClassSeats.add(new Seat( economyClassSeats.size()+1, passenger));
                 return 2;

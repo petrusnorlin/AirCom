@@ -35,7 +35,11 @@ public class UI {
     ArrayList<Integer> foodSelections = new ArrayList<Integer>();
     int totalFoodPrice = 0;
     
-    CalculateCosts calcCosts = new CalculateCosts();    
+    //CalculateCosts calcCosts = new CalculateCosts();
+    int airlineIncome = 0;
+    int airlineIncomeEconomy = 0;    
+    int airlineIncomeFirst = 0;
+    int airlineProfit = 0;
     
     public UI() {        
         plane = new AirplanePetrus();
@@ -83,6 +87,7 @@ public class UI {
     public void printBookMenu() {
         //System.out.println("Welcome to AirCom!");
         System.out.println();
+        CalculateCosts calcCosts = new CalculateCosts();
         
         System.out.println("Where would you like to go?");
         //TODO: read in the destination
@@ -228,42 +233,56 @@ public class UI {
         }
         
         calcCosts.printTotalPassengerPrice(customer, passengerPrice);//skriver ut
+        
+        //if (flightType)
+        plane.addPassengerToSeat(customer, flightType);
     }    
     
-    public void airlineInfo() {
+    public void airlineInfo() {//FlightType flightType
+        CalculateCosts calcCosts = new CalculateCosts();
         Scanner one = new Scanner(System.in);
-        int userSelection = 0;
-        System.out.println("What information about the airline would you like to know?");
-        System.out.println("1. Airline income");
-        System.out.println("2. Airline profit");
-        System.out.println();
-        System.out.println("9) Return to previous menu");
-        System.out.println("0) Exit AirCom");
-        userSelection = one.nextInt();//sc
-        if (userSelection == 1) {
-            
-            //arrayPass ska ersättas med en passagerarlista från någon klass
-            //int income = calcCosts.calculateAirlineIncome(arrayPass);
-            
-        }
-        //menyVal = one.nextInt();
-        int income = 0;
-        int incomeEconomy = 0;
-        switch (userSelection) {//menyVal
-            case 0:
-                System.exit(0);
-            case 1: income = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);//Airline income;
-                    incomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats(), this);
-                    calcCosts.printAirlineIncome(income + incomeEconomy);
+        int userSelection = 1;
+        while(userSelection != 9){
+            System.out.println();
+            System.out.println("What information about the airline would you like to know?");
+            System.out.println("1. Airline income");
+            System.out.println("2. Airline profit");
+            System.out.println();
+            System.out.println("9) Return to previous menu");
+            System.out.println("0) Exit AirCom");
+            userSelection = one.nextInt();//sc
+            //if (userSelection == 1) {
+
+                //arrayPass ska ersättas med en passagerarlista från någon klass
+                //int income = calcCosts.calculateAirlineIncome(arrayPass);
+            //}
+            //menyVal = one.nextInt();
+
+            //båda har flyttats upp till klassen och ändrats namn på
+            //int income = 0;
+            //int incomeEconomy = 0;
+        
+        //while(userSelection != 9){
+            switch (userSelection) {//menyVal
+                case 0:
+                    System.exit(0);
+                case 1:
+                    airlineIncome = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);//Airline income;
+                    airlineIncomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats(), this);
+                    //airlineIncomeFirst = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);
+                    calcCosts.printAirlineIncome(airlineIncome + airlineIncomeEconomy);// + airlineIncomeFirst);
                     break;
-            case 2: income = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);
-                    incomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats(), this);
-                    calcCosts.printAirlineIncome(income + incomeEconomy);
-                    int profit = calcCosts.calculateAirlineProfit(income + incomeEconomy);//Airline profit;
-                    calcCosts.printAirlineProfit(profit);
-                    break;
-            case 9: //go back to previous menu
-                    break;                       
+                case 2:
+                    airlineIncome = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);
+                    airlineIncomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats(), this);
+                    //airlineIncomeFirst = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);
+                    calcCosts.printAirlineIncome(airlineIncome + airlineIncomeEconomy);// + airlineIncomeFirst);
+                    airlineProfit = calcCosts.calculateAirlineProfit(airlineIncome + airlineIncomeEconomy);// + airlineIncomeFirst);//Airline profit;
+                    calcCosts.printAirlineProfit(airlineProfit);
+                    break;                
+                case 9: //go back to previous menu
+                    break;                
+            }
         }
     }
     

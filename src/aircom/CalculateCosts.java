@@ -67,7 +67,7 @@ public class CalculateCosts {
         
         //70% of the income is used to cover the costs of the airline company
         //the profit is then 30% of the income
-        sumAirlineProfit = (int) 0.3 * income;
+        sumAirlineProfit = (int) (0.3 * income);
         return sumAirlineProfit;
     }
     
