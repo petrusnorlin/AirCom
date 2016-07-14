@@ -19,8 +19,8 @@ public class Airplane {
     private Seat[] ecoClassSeats;
     private LocalDate departure;
     private LocalDate arrival;
-    static int counterEco;
-    static int counterFirst;
+    int counterEco;//SKA den var statisk?
+    int counterFirst;
     
     public FoodMenu getFoodMenu() {
         return foodMenu;
@@ -73,6 +73,27 @@ public class Airplane {
             System.out.println(es);            
         }
     }
+    
+    public String printOutEcoSeatsReservationsReturningString()
+    { StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < ecoClassSeats.length; i++) {
+            Seat es = ecoClassSeats[i];
+            if(es !=null)
+             builder.append(es).append("\n");                       
+        }
+        return builder.toString();
+    }
+    
+    public String printOutFirstSeatsReservationsReturningString()
+    { StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < fClassSeats.length; i++) {
+            Seat es = fClassSeats[i];
+            if(es !=null)
+             builder.append(es).append("\n");                       
+        }
+        return builder.toString();
+    }
+    
     
     public int seatAvailabilityECO()
     { int available=0;
