@@ -104,7 +104,7 @@ public class FoodMenu {
             //System.out.println(((Food)pair.getKey()).getFoodItem() + " price: " + pair.getValue()); //när jag inte overridar toString()
         }
    
-
+    }}
    
    
    
@@ -112,4 +112,4 @@ public class FoodMenu {
    
    
     
-}
+
