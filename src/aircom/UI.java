@@ -83,6 +83,7 @@ public class UI {
                     airlineInfo();//Airline info;
                     break;
                 case 3: //Show Airplane info();
+                    System.out.println();
                     System.out.println("Honolulu flight reservations:");
                     flyg.printOutFirstClassSeatsReservations();
                     flyg.printOutFirstClassSeatsReservations();
@@ -214,7 +215,7 @@ public class UI {
         //System.out.println();
         
         Passenger customer = new Passenger(flightType, eat, firstName, surName, persNr, phoneNr, gender);//exception?
-                
+        
         ArrayList<Food> foodChoices = new ArrayList<Food>();
         //int totalFoodPrice = 0;//flyttad till början av filen
         //Food f = new Food(economyClassFood.get(reader.nextInt()-1).getFoodItem());
@@ -277,11 +278,57 @@ public class UI {
         }
         System.out.println();
         System.out.println("Flight to " + dest + " with passenger " + 
-                firstName + surName + " booked.");
+                firstName + " " + surName + " booked.");
         calcCosts.printTotalPassengerPrice(customer, passengerPrice);//skriver ut
         
         //if (flightType)
         plane.addPassengerToSeat(customer, flightType);
+        
+        Seat s = new Seat();
+        s.setSeatedPassenger(customer);
+        if (flightType == FlightType.ECOCLASS) {
+            if (dest.equals("Honolulu")) {
+                flyg.getEcoClassSeats()[flyg.counterEco] = new Seat("B" + flyg.counterEco++, customer);
+            }
+            else if (dest.equals("Fiji")) {
+                flyg2.getEcoClassSeats()[flyg2.counterEco] = new Seat("B" + flyg2.counterEco++, customer);
+            }
+            else if (dest.equals("Tonga")) {
+                flyg3.getEcoClassSeats()[flyg3.counterEco] = new Seat("B" + flyg3.counterEco++, customer);
+            }
+        }
+        else if (flightType == FlightType.FIRSTCLASS) {
+            if (dest.equals("Honolulu")) {
+                flyg.getEcoClassSeats()[flyg.counterEco] = new Seat("B" + flyg.counterEco++, customer);
+            }
+            else if (dest.equals("Fiji")) {
+                flyg2.getEcoClassSeats()[flyg2.counterEco] = new Seat("B" + flyg2.counterEco++, customer);
+            }
+            else if (dest.equals("Tonga")) {
+                flyg3.getEcoClassSeats()[flyg3.counterEco] = new Seat("B" + flyg3.counterEco++, customer);
+            }
+        }
+        
+        
+        //från Matildas GUI
+        // p = passenger
+        // airplaneToUse(pl) = flyg, flyg2, eller flyg3
+//        if (ft == FlightType.ECOCLASS) {
+//            try {
+//                airplaneToUse(pl).getEcoClassSeats()[airplaneToUse(pl).counterEco] = new Seat("B" + airplaneToUse(pl).counterEco++, p);
+//
+//            } catch (Exception e) {
+//                System.out.println(e); //Ska vara ifall det är fullt i arrayen!!!
+//            }
+//        }
+//        if (ft == FlightType.FIRSTCLASS) {
+//            try {
+//                airplaneToUse(pl).getfClassSeats()[airplaneToUse(pl).counterFirst] = new Seat("A" + airplaneToUse(pl).counterFirst++, p);
+//            } catch (Exception e) {
+//                System.out.println("Full booked, 5/5"); //Ska vara ifall det är fullt i arrayen!!!
+//            }
+//        }
+        //flyg
     }    
     
     public void airlineInfo() {//FlightType flightType
@@ -313,15 +360,45 @@ public class UI {
                 case 0:
                     System.exit(0);
                 case 1:
-                    airlineIncome = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);//Airline income;
-                    airlineIncomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats(), this);
+                    if(flyg.getfClassSeats().length > 0) {//flyg.getfClassSeats().length > 0
+                        airlineIncome = calcCosts.calculateAirlineIncome2(flyg.getfClassSeats(), this);
+                    }
+                    if(flyg2.getfClassSeats().length > 0) {
+                        airlineIncome = airlineIncome + calcCosts.calculateAirlineIncome2(flyg2.getfClassSeats(), this);
+                    }
+                    if(flyg3.getfClassSeats().length > 0) {
+                        airlineIncome = airlineIncome + calcCosts.calculateAirlineIncome2(flyg3.getfClassSeats(), this);
+                    }
+                    if(flyg.getEcoClassSeats().length > 0) {
+                        airlineIncomeEconomy = calcCosts.calculateAirlineIncome2(flyg.getEcoClassSeats(), this);
+                    }
+                    if(flyg2.getEcoClassSeats().length > 0) {
+                        airlineIncomeEconomy = airlineIncomeEconomy + calcCosts.calculateAirlineIncome2(flyg2.getEcoClassSeats(), this);
+                    }
+                    if(flyg3.getEcoClassSeats().length > 0) {
+                        airlineIncomeEconomy = airlineIncomeEconomy + calcCosts.calculateAirlineIncome2(flyg3.getEcoClassSeats(), this);
+                    }
+                    
+                    //dessa 2 bortkommenterade för att använda dom 6 ovan istället. Annars skulle dessa användas med Petrus plan
+                    //airlineIncome = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);//Airline income;
+                    //airlineIncomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats(), this);
+                    
                     //airlineIncomeFirst = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);
                     System.out.println();
                     calcCosts.printAirlineIncome(airlineIncome + airlineIncomeEconomy);// + airlineIncomeFirst);
                     break;
                 case 2:
-                    airlineIncome = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);
-                    airlineIncomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats(), this);
+                    airlineIncome = calcCosts.calculateAirlineIncome2(flyg.getfClassSeats(), this);
+                    airlineIncome = airlineIncome + calcCosts.calculateAirlineIncome2(flyg2.getfClassSeats(), this);
+                    airlineIncome = airlineIncome + calcCosts.calculateAirlineIncome2(flyg3.getfClassSeats(), this);
+                    airlineIncomeEconomy = calcCosts.calculateAirlineIncome2(flyg.getEcoClassSeats(), this);
+                    airlineIncomeEconomy = airlineIncomeEconomy + calcCosts.calculateAirlineIncome2(flyg2.getEcoClassSeats(), this);
+                    airlineIncomeEconomy = airlineIncomeEconomy + calcCosts.calculateAirlineIncome2(flyg3.getEcoClassSeats(), this);
+                    
+                    //dessa 2 bortkommenterade för att använda dom 6 ovan istället. Annars skulle dessa användas med Petrus plan
+                    //airlineIncome = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);
+                    //airlineIncomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats(), this);
+                    
                     //airlineIncomeFirst = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);
                     System.out.println();
                     calcCosts.printAirlineIncome(airlineIncome + airlineIncomeEconomy);// + airlineIncomeFirst);
