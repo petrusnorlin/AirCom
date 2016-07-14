@@ -7,6 +7,7 @@ package aircom;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 
 /**
@@ -25,14 +26,11 @@ public class FoodMenu {
     
     private static ArrayList<Food> firstClassMenu = new ArrayList<>();       
     private static ArrayList<Food> ecoClassMenu = new ArrayList<>();
-    
-     public FoodMenu() {
+   static{
        firstClassMenu.add(new Food("VeggieLasagne", 190));
        firstClassMenu.add(new Food("Mediterranean sallad", 180));
        firstClassMenu.add(new Food("Beanburger de Lux", 210));
        firstClassMenu.add(new Food("Marinade tofu with roasted veggies", 220)); 
-       firstClassMenu.add(new Food("Coffee", 18));
-       firstClassMenu.add(new Food("Soda", 23));
        firstClassMenu.add(new Food("Coffee", 18));
        firstClassMenu.add(new Food("Soda", 23));
        firstClassMenu.add(new Food("Ice-cream", 18));
@@ -47,6 +45,8 @@ public class FoodMenu {
        ecoClassMenu.add(new Food("panacotta", 50));
        ecoClassMenu.add(new Food("chockladtryffel", 25));
        
+            }
+    public FoodMenu() {
        
     }
     
@@ -87,6 +87,22 @@ public class FoodMenu {
     public static HashMap<Food, Integer> getEcoClassMenuOld() {
         return ecoClassMenuOld;
     }
+    
+    public static void printFoodMenu(ArrayList<Food> al)
+    {
+        for (Food f : al) {
+            System.out.println(f.getFoodItem() + " " + f.getPrice() + "kr");
+        }
+ 
+    }
+    
+    public static void printFoodMenuOld(HashMap mp) {
+        Iterator it = mp.entrySet().iterator();
+        while (it.hasNext()) {
+            HashMap.Entry pair = (HashMap.Entry) it.next();//it.next plockar fram key o value i variablen
+            System.out.println(pair.getKey() + " price: " + pair.getValue() + "kr");
+            //System.out.println(((Food)pair.getKey()).getFoodItem() + " price: " + pair.getValue()); //när jag inte overridar toString()
+        }
    
 
    
