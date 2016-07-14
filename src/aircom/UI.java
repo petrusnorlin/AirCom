@@ -172,22 +172,35 @@ public class UI {
         
         //foodSelections innehåller vad passagerarna valde att äta o dricka...
         //...i meny-listorna
-        if (flightType == FlightType.FIRSTCLASS) {
-            ArrayList<Food> firstClassFood = FoodMenu.getFirstClassMenu();
+        FoodMenu menu = new FoodMenu();
+        if (flightType == FlightType.FIRSTCLASS) {            
+            ArrayList<Food> firstClassFood = menu.getFirstClassMenu();
             //foodSelections;
-            for (int a = 0; a < foodSelections.size(); a++) {
-                totalFoodPrice = totalFoodPrice + firstClassFood.get(foodSelections.get(a - 1)).getPrice();//ger fel?
+            for (int a = 0; a < foodSelections.size(); a++) {//foodSelections.get(a - 1)
+                if (foodSelections.get(a) > 0){
+                    totalFoodPrice = totalFoodPrice + firstClassFood.get(foodSelections.get(a) - 1).getPrice();//ger fel?
+                }
+                else{
+                    totalFoodPrice = totalFoodPrice + firstClassFood.get(foodSelections.get(a)).getPrice();//ger fel?
+                }
                 //lägger till mat folk beställt i en lista
-                foodChoices.add(firstClassFood.get(foodSelections.get(a - 1)));
+                //foodSelections.get(a - 1)
+                foodChoices.add(firstClassFood.get(foodSelections.get(a) - 1));
             }
         }
         else if (flightType == FlightType.ECOCLASS) {
-            ArrayList<Food> economyClassFood = FoodMenu.getEcoClassMenu();
+            ArrayList<Food> economyClassFood = menu.getEcoClassMenu();
             //foodSelections;
-            for (int a = 0; a < foodSelections.size(); a++) {
-                totalFoodPrice = totalFoodPrice + economyClassFood.get(foodSelections.get(a - 1)).getPrice();
+            for (int a = 0; a < foodSelections.size(); a++) {//foodSelections.get(a - 1)
+                if (foodSelections.get(a) > 0){
+                    totalFoodPrice = totalFoodPrice + economyClassFood.get(foodSelections.get(a) - 1).getPrice();
+                }
+                else{
+                    totalFoodPrice = totalFoodPrice + economyClassFood.get(foodSelections.get(a)).getPrice();
+                }                
                 //lägger till mat folk beställt i en lista
-                foodChoices.add(economyClassFood.get(foodSelections.get(a - 1)));
+                //foodSelections.get(a - 1)
+                foodChoices.add(economyClassFood.get(foodSelections.get(a) - 1));
             }
         }
         
@@ -261,10 +274,11 @@ public class UI {
         //int foodChoice = 1;
         System.out.println("Food menu:");
         System.out.println();
+        FoodMenu menu = new FoodMenu();
         while(menyVal != 0){
             Scanner reader = new Scanner(System.in);
-            if (flType == FlightType.FIRSTCLASS) {
-                ArrayList<Food> firstClassFood = FoodMenu.getFirstClassMenu();
+            if (flType == FlightType.FIRSTCLASS) {                
+                ArrayList<Food> firstClassFood = menu.getFirstClassMenu();
                 int i = 0;
                 //for (Food food : firstClassFood) {
                 for (int a = 0; a < firstClassFood.size(); a++) {    
@@ -280,15 +294,15 @@ public class UI {
                 //HashMap.Entry pair = (HashMap.Entry) it.next();
                 //System.out.println(i + ". " + pair.getKey());//it.toString()
                 //}
-                
-                if (reader.nextInt() == 0) {
+                menyVal = reader.nextInt();
+                if (menyVal == 0) {
                     break;
                 }
                 else {
-                    foodChoices.add(reader.nextInt());
+                    foodChoices.add(menyVal);
                 }
-            } else if (flType == FlightType.ECOCLASS) {
-                ArrayList<Food> economyClassFood = FoodMenu.getEcoClassMenu();
+            } else if (flType == FlightType.ECOCLASS) {                
+                ArrayList<Food> economyClassFood = menu.getEcoClassMenu();
                 int i = 0;
                 //for (Food food : economyClassFood) {
                 for (int a = 0; a < economyClassFood.size(); a++) {
@@ -305,11 +319,12 @@ public class UI {
                 
                 //Food f = new Food(economyClassFood.get(reader.nextInt()-1).getFoodItem());
                 //foodChoices.add(f);
-                if (reader.nextInt() == 0) {
+                menyVal = reader.nextInt();
+                if (menyVal == 0) {
                     break;
                 }
                 else {
-                    foodChoices.add(reader.nextInt());
+                    foodChoices.add(menyVal);
                 }
             }
 
