@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
 
+
 /**
  *
  * @author Jimmy
@@ -90,10 +91,18 @@ public class UI {
                     flyg3.printOutFirstClassSeatsReservations();
                     flyg3.printOutFirstClassSeatsReservations();
                     break;
-                case 4: //Take off Airplane(); //egentligen starta alla plan
-                    //Thread t = new Thread(flyg);
-                    //t.Start();
+                    
+                case 4: //Starts all Airplanes (boarding, takeoff, flying, landing, desembarking)
+                    AirplaneThread airplane1 = new AirplaneThread(flyg.getPlane());
+                    airplane1.start();
+
+                    AirplaneThread airplane2 = new AirplaneThread(flyg2.getPlane());
+                    airplane2.start();
+
+                    AirplaneThread airplane3 = new AirplaneThread(flyg3.getPlane());
+                    airplane3.start();
                     break;
+                    
                 default:
                     System.out.println("Please type number 0-4 only");
             }

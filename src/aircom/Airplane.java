@@ -13,7 +13,7 @@ public class Airplane {
     
     private static FoodMenu foodMenu = new FoodMenu(); //Måste vara statisk så statiska arraylistan inte fylls på varje gång konstruktor FoodMenu() körs.
          
-    private String plane;
+    private String plane;   //flygplansID
     DestinationType destination;
     private Seat[] fClassSeats;
     private Seat[] ecoClassSeats;
