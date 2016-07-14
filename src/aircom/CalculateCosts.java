@@ -59,6 +59,34 @@ public class CalculateCosts {
         return sumPassengerPrices;
     }
     
+    //la till denna för att använda Matildas Airplane med 'Seat[]'
+    public int calculateAirlineIncome2(Seat[] arrayPass, UI ui) {
+        int sumPassengerPrices = 0;
+        int ticketPrice = 0;
+        
+        
+        //for (Passenger pass : arrayPass) {
+        for (Seat chair : arrayPass) {
+            if (chair.getSeatedPassenger().getFt() == FlightType.FIRSTCLASS) {
+                ticketPrice = 20000;
+            }
+            else if (chair.getSeatedPassenger().getFt() == FlightType.ECOCLASS) {
+                ticketPrice = 5000;
+            }
+            
+            //bijettPris-metod ska anropas här under...
+            //...och även matpriset
+            
+            //pass.planeClass
+            //sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(chair.seatedPassenger.getFt() * sumPassengerPrices);
+            //sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, chair.getSeatedPassenger().calculateFoodOrder());
+            sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, ui.getTotalFoodPrice());
+            
+        }
+        
+        return sumPassengerPrices;
+    }
+    
     public void printAirlineIncome(int income) {
         System.out.println("Income for the airline company is " + income);
     }
