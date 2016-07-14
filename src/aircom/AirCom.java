@@ -37,13 +37,17 @@ public class AirCom {
         printFoodMenuOld(FoodMenu.getEcoClassMenuOld());
 
         //la jag(Jimmy) till
-        AirplanePetrus plane = new AirplanePetrus();
+//        AirplanePetrus plane = new AirplanePetrus();
+//        Airplane flyg = new Airplane("HOLU123", DestinationType.HONOLULU);
+//        Airplane flyg2 = new Airplane("FIJ456", DestinationType.FIJI);
+//        Airplane flyg3 = new Airplane("TON789", DestinationType.TONGA);
         
-        //UI ui = new UI();
-        UI ui2 = new UI(plane);
+        UI ui = new UI();
+//        UI ui2 = new UI(plane);
+//        UI ui3 = new UI(flyg);
         //ui.printMenu();
         System.out.println();
-        ui2.printMainMenu();
+        ui.printMainMenu();//ui2
     }
     public static void printFoodMenu(ArrayList<Food> al)
     {

@@ -21,6 +21,9 @@ public class UI {
     int destReply = 0;
     String dest = "";
     AirplanePetrus plane;
+    Airplane flyg;
+    Airplane flyg2;
+    Airplane flyg3;
     
     String flightClass = "";
     FlightType flightType;
@@ -44,10 +47,14 @@ public class UI {
     
     public UI() {        
         plane = new AirplanePetrus();
+        flyg = new Airplane("HOLU123", DestinationType.HONOLULU);
+        flyg2 = new Airplane("FIJ456", DestinationType.FIJI);
+        flyg3 = new Airplane("TON789", DestinationType.TONGA);
     }
     
-    public UI(AirplanePetrus plane) {        
-        this.plane = plane;
+    //public UI(AirplanePetrus plane) {        
+    public UI(Airplane flyg) {
+        this.flyg = flyg;
     }
     
     public void printMainMenu() {
@@ -76,8 +83,21 @@ public class UI {
                     airlineInfo();//Airline info;
                     break;
                 case 3: //Show Airplane info();
+                    System.out.println("Honolulu flight reservations:");
+                    flyg.printOutFirstClassSeatsReservations();
+                    flyg.printOutFirstClassSeatsReservations();
+                    
+                    System.out.println("Fiji flight reservations:");
+                    flyg2.printOutFirstClassSeatsReservations();
+                    flyg2.printOutFirstClassSeatsReservations();
+                    
+                    System.out.println("Tonga flight reservations:");
+                    flyg3.printOutFirstClassSeatsReservations();
+                    flyg3.printOutFirstClassSeatsReservations();
                     break;
-                case 4: //Take off Airplane();
+                case 4: //Take off Airplane(); //egentligen starta alla plan
+                    //Thread t = new Thread(flyg);
+                    //t.Start();
                     break;
                 default:
                     System.out.println("Please type number 0-4 only");
