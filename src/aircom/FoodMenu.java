@@ -51,42 +51,42 @@ public class FoodMenu {
     }
     
 
-    public static ArrayList<Food> getFirstClassMenu() {
+    public ArrayList<Food> getFirstClassMenu() {
         return firstClassMenu;
     }
 
 
-    public static ArrayList<Food> getEcoClassMenu() {
+    public ArrayList<Food> getEcoClassMenu() {
         return ecoClassMenu;
     }
 
   
-    //   static final HashMap<Food, Integer> firstClassMenuOld = new HashMap<Food, Integer>();  
-//  
-//  static{
-//       firstClassMenu.add(new Food("VeggieLasagne", 190));
-//       firstClassMenu.add(new Food("Mediterranean sallad", 180));
-//       firstClassMenu.add(new Food("Beanburger de Lux", 210));
-//       firstClassMenu.add(new Food("Marinade tofu with roasted veggies", 220));
-//           }
-//   
-//   
-//   static final HashMap<Food, Integer> ecoClassMenuOld = new HashMap<Food, Integer>();
-//   static {
-//       ecoClassMenuOld.put(new Food("Chili sin carne"), 130);
-//       ecoClassMenuOld.put(new Food("Broccoli soup"), 120);
-//       ecoClassMenuOld.put(new Food("Club Sandwich"), 110);
-//       ecoClassMenuOld.put(new Food("nudel wok"), 140);
-//       
-//           }
-//   
-//    public static HashMap<Food, Integer> getFirstClassMenu() {
-//        return firstClassMenuOld;
-//    }      
-//
-//    public static HashMap<Food, Integer> getEcoClassMenu() {
-//        return ecoClassMenuOld;
-//    }
+       static final HashMap<Food, Integer> firstClassMenuOld = new HashMap<Food, Integer>();  
+  
+  static{
+       firstClassMenuOld.put(new Food("VeggieLasagne"), 190);
+       firstClassMenuOld.put(new Food("Mediterranean sallad"), 180);
+       firstClassMenuOld.put(new Food("Beanburger de Lux"), 210);
+       firstClassMenuOld.put(new Food("Marinade tofu with roasted veggies"), 220);
+           }
+   
+   
+   static final HashMap<Food, Integer> ecoClassMenuOld = new HashMap<Food, Integer>();
+   static {
+       ecoClassMenuOld.put(new Food("Chili sin carne"), 130);
+       ecoClassMenuOld.put(new Food("Broccoli soup"), 120);
+       ecoClassMenuOld.put(new Food("Club Sandwich"), 110);
+       ecoClassMenuOld.put(new Food("nudel wok"), 140);
+       
+           }
+   
+    public static HashMap<Food, Integer> getFirstClassMenuOld() {
+        return firstClassMenuOld;
+    }      
+
+    public static HashMap<Food, Integer> getEcoClassMenuOld() {
+        return ecoClassMenuOld;
+    }
    
 
    

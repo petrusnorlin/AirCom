@@ -5,7 +5,6 @@
  */
 package aircom;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -32,8 +31,6 @@ public class UI {
     String eatReply = "";
     boolean eat = false;
     int foodSelection = 0;
-    ArrayList<Integer> foodSelections = new ArrayList<Integer>();
-    int totalFoodPrice = 0;
     
     //CalculateCosts calcCosts = new CalculateCosts();
     int airlineIncome = 0;
@@ -130,8 +127,7 @@ public class UI {
             //TODO: present list of food items
             //TODO: read in choices by the users
             if (eat == true) {
-                //foodSelection = printFoodMenu(flightType);
-                foodSelections = printFoodMenu(flightType);
+                foodSelection = printFoodMenu(flightType);
             }
         
         System.out.println();
@@ -170,56 +166,17 @@ public class UI {
         //System.out.println();
         
         Passenger customer = new Passenger(flightType, eat, firstName, surName, persNr, phoneNr, gender);//exception?
-                
-        ArrayList<Food> foodChoices = new ArrayList<Food>();
-        //int totalFoodPrice = 0;//flyttad till början av filen
-        //Food f = new Food(economyClassFood.get(reader.nextInt()-1).getFoodItem());
-        
-        //foodSelections innehåller vad passagerarna valde att äta o dricka...
-        //...i meny-listorna
-        FoodMenu menu = new FoodMenu();
-        if (flightType == FlightType.FIRSTCLASS) {            
-            ArrayList<Food> firstClassFood = menu.getFirstClassMenu();
-            //foodSelections;
-            for (int a = 0; a < foodSelections.size(); a++) {//foodSelections.get(a - 1)
-                if (foodSelections.get(a) > 0){
-                    totalFoodPrice = totalFoodPrice + firstClassFood.get(foodSelections.get(a) - 1).getPrice();//ger fel?
-                }
-                else{
-                    totalFoodPrice = totalFoodPrice + firstClassFood.get(foodSelections.get(a)).getPrice();//ger fel?
-                }
-                //lägger till mat folk beställt i en lista
-                //foodSelections.get(a - 1)
-                foodChoices.add(firstClassFood.get(foodSelections.get(a) - 1));
-            }
-        }
-        else if (flightType == FlightType.ECOCLASS) {
-            ArrayList<Food> economyClassFood = menu.getEcoClassMenu();
-            //foodSelections;
-            for (int a = 0; a < foodSelections.size(); a++) {//foodSelections.get(a - 1)
-                if (foodSelections.get(a) > 0){
-                    totalFoodPrice = totalFoodPrice + economyClassFood.get(foodSelections.get(a) - 1).getPrice();
-                }
-                else{
-                    totalFoodPrice = totalFoodPrice + economyClassFood.get(foodSelections.get(a)).getPrice();
-                }                
-                //lägger till mat folk beställt i en lista
-                //foodSelections.get(a - 1)
-                foodChoices.add(economyClassFood.get(foodSelections.get(a) - 1));
-            }
-        }
         
         customer.setChosenFood(foodSelection, flightType);
         int foodPrices = 0;
         if (flightType == FlightType.FIRSTCLASS) {//'FoodMenu.firstClassMenu.get(customer.choseFood)' nedan, tar bort tillfälligt
-            foodPrices = totalFoodPrice;// 200;//FoodMenu.;
-            //FoodMenu.getFirstClassMenu().;//390;//getChoseFood()//exception
+            foodPrices = 390;//getChoseFood()//exception
         }
         else if (flightType == FlightType.ECOCLASS) {//FoodMenu.ecoClassMenu.get(customer.choseFood) tillfälligt borttagit
-            foodPrices = totalFoodPrice;//190;//getChoseFood()//exception
+            foodPrices = 190;//getChoseFood()//exception
         }
         
-        //int foodPrices = FoodMenu.firstClassMenuOld.get(customer.chosenFood);//getChoseFood()
+        int foodPrices = FoodMenu.firstClassMenuOld.get(customer.chosenFood);//getChoseFood()
         //calculate and print total price
         //int foodPrices = 215;//köper mat för 215 kr
         //foodPrices = customer.calculateFoodOrder();
@@ -241,6 +198,7 @@ public class UI {
     public void airlineInfo() {//FlightType flightType
         CalculateCosts calcCosts = new CalculateCosts();
         Scanner one = new Scanner(System.in);
+<<<<<<< HEAD
         int userSelection = 1;
         while(userSelection != 9){
             System.out.println();
@@ -271,7 +229,33 @@ public class UI {
                     airlineIncomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats(), this);
                     //airlineIncomeFirst = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);
                     calcCosts.printAirlineIncome(airlineIncome + airlineIncomeEconomy);// + airlineIncomeFirst);
+=======
+        int userSelection = 0;
+        System.out.println("What information about the airline would you like to know?");
+        System.out.println("1. Airline income");
+        System.out.println("2. Airline profit");
+        System.out.println();
+        System.out.println("9) Return to previous menu");
+        System.out.println("0) Exit AirCom");
+        userSelection = one.nextInt();//sc
+        if (userSelection == 1) {
+            
+            //arrayPass ska ersättas med en passagerarlista från någon klass
+            //int income = calcCosts.calculateAirlineIncome(arrayPass);
+            
+        }
+        //menyVal = one.nextInt();
+        int income = 0;
+        int incomeEconomy = 0;
+        switch (userSelection) {//menyVal
+            case 0:
+                System.exit(0);
+            case 1: income = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats());//Airline income;
+                    incomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats());
+                    calcCosts.printAirlineIncome(income + incomeEconomy);
+>>>>>>> origin/master
                     break;
+<<<<<<< HEAD
                 case 2:
                     airlineIncome = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);
                     airlineIncomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats(), this);
@@ -283,79 +267,44 @@ public class UI {
                 case 9: //go back to previous menu
                     break;                
             }
+=======
+            case 2: income = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats());
+                    incomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats());
+                    calcCosts.printAirlineIncome(income + incomeEconomy);
+                    int profit = calcCosts.calculateAirlineProfit(income + incomeEconomy);//Airline profit;
+                    calcCosts.printAirlineProfit(profit);
+                    break;
+            case 9: //go back to previous menu
+                    break;                       
+>>>>>>> origin/master
         }
     }
     
-    private ArrayList<Integer> printFoodMenu(FlightType flType) {//int
-        ArrayList<Integer> foodChoices = new ArrayList<>();
-        int menyVal = 1;
-        //Scanner reader = new Scanner(System.in);
-        //int foodChoice = 1;
-        System.out.println("Food menu:");
-        System.out.println();
-        FoodMenu menu = new FoodMenu();
-        while(menyVal != 0){
-            Scanner reader = new Scanner(System.in);
-            if (flType == FlightType.FIRSTCLASS) {                
-                ArrayList<Food> firstClassFood = menu.getFirstClassMenu();
-                int i = 0;
-                //for (Food food : firstClassFood) {
-                for (int a = 0; a < firstClassFood.size(); a++) {    
-                    i++;
-                    System.out.println((a+1) + ". " + firstClassFood.get(a).toString());//food
-                }
-
-                //Iterator it = FoodMenu.firstClassMenuOld.entrySet().iterator();
-                //int i = 0;
-                //while (it.hasNext()) {
-                //for (String food : FoodMenu.firstClassMenu) {
-                //i++;
-                //HashMap.Entry pair = (HashMap.Entry) it.next();
-                //System.out.println(i + ". " + pair.getKey());//it.toString()
-                //}
-                menyVal = reader.nextInt();
-                if (menyVal == 0) {
-                    break;
-                }
-                else {
-                    foodChoices.add(menyVal);
-                }
-            } else if (flType == FlightType.ECOCLASS) {                
-                ArrayList<Food> economyClassFood = menu.getEcoClassMenu();
-                int i = 0;
-                //for (Food food : economyClassFood) {
-                for (int a = 0; a < economyClassFood.size(); a++) {
-                    i++;
-                    System.out.println((a+1) + ". " + economyClassFood.get(a).toString());
-                }
-                //Iterator it = FoodMenu.ecoClassMenuOld.entrySet().iterator();
-                //int i = 0;
-                //while (it.hasNext()) {
-                //i++;
-                //HashMap.Entry pair = (HashMap.Entry) it.next();
-                //System.out.println(i + ". " + pair.getKey());//it.toString()
-                //}
-                
-                //Food f = new Food(economyClassFood.get(reader.nextInt()-1).getFoodItem());
-                //foodChoices.add(f);
-                menyVal = reader.nextInt();
-                if (menyVal == 0) {
-                    break;
-                }
-                else {
-                    foodChoices.add(menyVal);
-                }
+    private int printFoodMenu(FlightType flType) {
+        Scanner reader = new Scanner(System.in);
+        int foodChoice;
+        if (flType == FlightType.FIRSTCLASS) {
+            Iterator it = FoodMenu.firstClassMenuOld.entrySet().iterator();
+            int i = 0;
+            while (it.hasNext()) {
+            //for (String food : FoodMenu.firstClassMenu) {
+                i++;
+                HashMap.Entry pair = (HashMap.Entry) it.next();
+                System.out.println(i + ". " + pair.getKey());//it.toString()
             }
-
-            //foodChoice = reader.nextInt();            
         }
-        return foodChoices;//foodChoice
-    }
-    
-    //temporär metod för att komma åt matpriserna för det passagerarna beställt
-    //ska nog ligga i annan klass
-    public int getTotalFoodPrice() {
-        return totalFoodPrice;
+        else if (flType == FlightType.ECOCLASS) {
+            Iterator it = FoodMenu.ecoClassMenuOld.entrySet().iterator();
+            int i = 0;
+            while (it.hasNext()) {
+                i++;
+                HashMap.Entry pair = (HashMap.Entry) it.next();
+                System.out.println(i + ". " + pair.getKey());//it.toString()
+            }
+        }
+        
+        foodChoice = reader.nextInt();
+        return foodChoice;
     }
 }
 
