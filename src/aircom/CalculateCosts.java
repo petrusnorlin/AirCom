@@ -32,7 +32,7 @@ public class CalculateCosts {
     }
     
     //public int calculateAirlineIncome(ArrayList<Passenger> arrayPass) {
-    public int calculateAirlineIncome(ArrayList<Seat> arrayPass) {
+    public int calculateAirlineIncome(ArrayList<Seat> arrayPass, UI ui) {
         int sumPassengerPrices = 0;
         int ticketPrice = 0;
         
@@ -51,7 +51,8 @@ public class CalculateCosts {
             
             //pass.planeClass
             //sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(chair.seatedPassenger.getFt() * sumPassengerPrices);
-            sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, chair.getSeatedPassenger().calculateFoodOrder());
+            //sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, chair.getSeatedPassenger().calculateFoodOrder());
+            sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, ui.getTotalFoodPrice());
             
         }
         
@@ -67,7 +68,7 @@ public class CalculateCosts {
         
         //70% of the income is used to cover the costs of the airline company
         //the profit is then 30% of the income
-        sumAirlineProfit = (int) 0.3 * income;
+        sumAirlineProfit = (int) (0.3 * income);
         return sumAirlineProfit;
     }
     
