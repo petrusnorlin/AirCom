@@ -18,6 +18,7 @@ import java.util.Scanner;
 public class UI {
     Scanner sc = new Scanner(System.in);
     
+    int destReply = 0;
     String dest = "";
     AirplanePetrus plane;
     
@@ -88,20 +89,42 @@ public class UI {
         //System.out.println("Welcome to AirCom!");
         System.out.println();
         CalculateCosts calcCosts = new CalculateCosts();
+        destReply = 0;
         
-        System.out.println("Where would you like to go?");
-        //TODO: read in the destination
-        //Airplane.setDestination = ...
-        System.out.println("1. Tokyo");
-        System.out.println("2. New York");
-        System.out.println("3. Calcutta");
-        System.out.println("4. London");
-        System.out.println("5. Melbourne");
-        dest = sc.nextLine();//next?
-        
-        System.out.println("Would you like to travel in first class['F'] or economy class['E']?");
-        //TODO: read in the class type
-        //Passenger.setFlightClass//first eller economy
+        while (destReply > 3 || destReply < 1){
+            System.out.println("Where would you like to go?");
+            //TODO: read in the destination
+            //Airplane.setDestination = ...
+            System.out.println("1. Honolulu");//Tokyo");
+            System.out.println("2. Tonga"); //New York");
+            System.out.println("3. Fiji");//Calcutta");
+            //System.out.println("4. London");
+            //System.out.println("5. Melbourne");
+            destReply = sc.nextInt();//next?
+//        while (destReply < 4 && destReply > 0){
+            switch (destReply) {
+                case 1:     dest = "Honolulu";
+                            break;
+                case 2:     dest = "Tonga";
+                            break;
+                case 3:     dest = "Fiji";
+                            break;
+                default:    System.out.println("Please write a number 1-3");
+                            break;
+            }
+        }
+//        if (destReply == 1){
+//            dest = "Honolulu";
+//        }
+//        else if (destReply == 2){
+//            dest = "Tonga";
+//        }
+//        else if (destReply == 3){
+//            dest = "Fiji";
+//        }
+        sc.nextLine();//rensar bufferten
+        System.out.println();
+        System.out.println("Would you like to travel in first class['F'] or economy class['E']?");        
         flightClass = sc.nextLine();
         if (flightClass.equalsIgnoreCase("f")) {
             flightType = FlightType.FIRSTCLASS;
@@ -131,6 +154,7 @@ public class UI {
             //TODO: read in choices by the users
             if (eat == true) {
                 //foodSelection = printFoodMenu(flightType);
+                System.out.println();
                 foodSelections = printFoodMenu(flightType);
             }
         
@@ -231,7 +255,9 @@ public class UI {
         else if (flightType == FlightType.ECOCLASS) {
             calcCosts.calculateTotalPassengerPrice(5000, foodPrices);
         }
-        
+        System.out.println();
+        System.out.println("Flight to " + dest + " with passenger " + 
+                firstName + surName + " booked.");
         calcCosts.printTotalPassengerPrice(customer, passengerPrice);//skriver ut
         
         //if (flightType)
@@ -270,14 +296,17 @@ public class UI {
                     airlineIncome = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);//Airline income;
                     airlineIncomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats(), this);
                     //airlineIncomeFirst = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);
+                    System.out.println();
                     calcCosts.printAirlineIncome(airlineIncome + airlineIncomeEconomy);// + airlineIncomeFirst);
                     break;
                 case 2:
                     airlineIncome = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);
                     airlineIncomeEconomy = calcCosts.calculateAirlineIncome(plane.getEconomyClassSeats(), this);
                     //airlineIncomeFirst = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);
+                    System.out.println();
                     calcCosts.printAirlineIncome(airlineIncome + airlineIncomeEconomy);// + airlineIncomeFirst);
                     airlineProfit = calcCosts.calculateAirlineProfit(airlineIncome + airlineIncomeEconomy);// + airlineIncomeFirst);//Airline profit;
+                    System.out.println();
                     calcCosts.printAirlineProfit(airlineProfit);
                     break;                
                 case 9: //go back to previous menu
@@ -346,7 +375,7 @@ public class UI {
                     foodChoices.add(menyVal);
                 }
             }
-
+            System.out.println();
             //foodChoice = reader.nextInt();            
         }
         return foodChoices;//foodChoice
