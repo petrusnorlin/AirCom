@@ -65,9 +65,9 @@ public class FoodMenu {
   
   static{
        firstClassMenuOld.put(new Food("VeggieLasagne"), 190);
-       firstClassMenuOld.put(new Food("Mediterranean sallad"), 180);
+       firstClassMenuOld.put(new Food("Ceaser sallad"), 180);
        firstClassMenuOld.put(new Food("Beanburger de Lux"), 210);
-       firstClassMenuOld.put(new Food("Marinade tofu with roasted veggies"), 220);
+       firstClassMenuOld.put(new Food("Tofu bruschetta"), 220);
            }
    
    

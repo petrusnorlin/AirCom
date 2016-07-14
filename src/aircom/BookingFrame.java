@@ -26,6 +26,41 @@ public class BookingFrame extends javax.swing.JFrame {
     String destination;
     DefaultListModel dlm = new DefaultListModel();//Denna kommer användas till foodmenu
 
+    public void printToRightTextArea4ECO (int pl)
+        {
+        if (pl ==1)//håller koll på destination alltså vilken ruta den ska in i.
+        {
+        jTextAreaShowBookingHo.setText(airplaneToUse(pl).printOutEcoSeatsReservationsReturningString());
+        //jTextAreaShowBooking.setText((airplaneToUse(pl).getEcoClassSeats()[airplaneToUse(pl).counterEco]).toString());//Innan såg de ut så o då skriver den bara ut Det aktuella Seat.
+        }
+        if (pl == 2)
+        {
+            
+        jTextShowingBookingsFI.setText(airplaneToUse(pl).printOutEcoSeatsReservationsReturningString());
+        } 
+        if(pl == 3)
+        {
+        jTextAreaShowingBookingsTo.setText(airplaneToUse(pl).printOutEcoSeatsReservationsReturningString());
+        }
+        }
+    
+    public void printToRightTextArea4First (int pl)
+        {
+        if (pl ==1)
+        {
+        jTextAreaShowBookingHo.setText(airplaneToUse(pl).printOutFirstSeatsReservationsReturningString());
+        }
+        if (pl == 2)
+        {
+        jTextShowingBookingsFI.setText(airplaneToUse(pl).printOutFirstSeatsReservationsReturningString());
+        } 
+        if(pl == 3)
+        {
+        jTextAreaShowingBookingsTo.setText(airplaneToUse(pl).printOutFirstSeatsReservationsReturningString());
+        }
+        }
+    
+    
     public void printOutSeatAvailbility() {
         jLabelFlight.setText("Flight " + airplaneToUse(pl).getPlane());
         jLabelDeparture.setText("Departure" + airplaneToUse(pl).getDeparture());
@@ -40,7 +75,7 @@ public class BookingFrame extends javax.swing.JFrame {
         StringBuilder builder = new StringBuilder();
         for (Passenger passenger : passengerlist) {
             //jTextAreaShowBooking.setText(passenger + "\n");
-            builder.append(passenger).append("\n");
+            builder.append(passenger).append("\n"); // <---- FÖR VARJE LOOP passenger.toString() + radbrytning!!!
             //System.out.println(pa);
         }
         return builder.toString();
@@ -71,12 +106,11 @@ public class BookingFrame extends javax.swing.JFrame {
 
         if (jRadioButton1stC.isSelected()) {
             ft = FlightType.FIRSTCLASS;
-
         }
         if (jRadioButtonEcoCl.isSelected()) {
             ft = FlightType.ECOCLASS;
-
         }
+        
         if (jCheckBoxForFood.isSelected() == true) {
             eat = true;
         } else {
@@ -105,7 +139,10 @@ public class BookingFrame extends javax.swing.JFrame {
 
         if (ft == FlightType.ECOCLASS) {
             try {
-                airplaneToUse(pl).getEcoClassSeats()[airplaneToUse(pl).counterEco] = new Seat("B" + airplaneToUse(pl).counterEco++, p);
+           Seat seat1=     new Seat("B" + airplaneToUse(pl).counterEco++, p);
+                airplaneToUse(pl).getEcoClassSeats()[airplaneToUse(pl).counterEco] = seat1;//new Seat("B" + airplaneToUse(pl).counterEco++, p);
+                printToRightTextArea4ECO(pl);
+                
 
             } catch (Exception e) {
                 System.out.println(e); //Ska vara ifall det är fullt i arrayen!!!
@@ -114,16 +151,18 @@ public class BookingFrame extends javax.swing.JFrame {
         if (ft == FlightType.FIRSTCLASS) {
             try {
                 airplaneToUse(pl).getfClassSeats()[airplaneToUse(pl).counterFirst] = new Seat("A" + airplaneToUse(pl).counterFirst++, p);
+                printToRightTextArea4First(pl);
             } catch (Exception e) {
                 System.out.println("Full booked, 5/5"); //Ska vara ifall det är fullt i arrayen!!!
             }
         }
-
-        jTextAreaShowBooking.setText("Reservations: " + "\n" + printOutPassengerList(p));
+        
+        
+       // jTextAreaShowBooking.setText("Reservations: " + "\n" + printOutPassengerList(p));
         System.out.println("");
 
-        //airplaneToUse(pl).printOutEcoSeatsReservations();
-        //airplaneToUse(pl).printOutFirstClassSeatsReservations();
+        airplaneToUse(pl).printOutEcoSeatsReservations();
+        airplaneToUse(pl).printOutFirstClassSeatsReservations();
         //FlightManager.passengerList.add(p);
 //        jTextAreaShowBooking.setText("Order summary:" + "\n" + "Full name: " + fname + " " + lname + 
 //                "\n" + "Personal Identity Number: " + persnr +"\n" + "Mobile phone number: " + phonenr);        
@@ -209,18 +248,18 @@ public class BookingFrame extends javax.swing.JFrame {
         jLabelDeparture = new javax.swing.JLabel();
         jLabelArrival = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaShowBooking = new javax.swing.JTextArea();
+        jTextAreaShowBookingHo = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListFoodMenu = new javax.swing.JList<>();
         jLabelSeatsAvailFIRST = new javax.swing.JLabel();
         jLabelSeatAvailEco = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextShowingBookingsFI = new javax.swing.JTextArea();
         jLabelFiPaLi = new javax.swing.JLabel();
         jLabelHoPaLi = new javax.swing.JLabel();
         jLabelToPaLi = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        jTextAreaShowingBookingsTo = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -332,7 +371,7 @@ public class BookingFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 700, -1, -1));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 830, 30));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 1020, 30));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aircom/images/paradise.png"))); // NOI18N
         jLabel11.setText("jLabel11");
@@ -391,15 +430,15 @@ public class BookingFrame extends javax.swing.JFrame {
         jLabelArrival.setToolTipText("");
         getContentPane().add(jLabelArrival, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, -1));
 
-        jTextAreaShowBooking.setColumns(20);
-        jTextAreaShowBooking.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaShowBooking);
+        jTextAreaShowBookingHo.setColumns(20);
+        jTextAreaShowBookingHo.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaShowBookingHo);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 170, 240, 110));
 
         jScrollPane2.setViewportView(jListFoodMenu);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 310, 200));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 240, 200));
 
         jLabelSeatsAvailFIRST.setText("jLabel13");
         getContentPane().add(jLabelSeatsAvailFIRST, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
@@ -407,9 +446,9 @@ public class BookingFrame extends javax.swing.JFrame {
         jLabelSeatAvailEco.setText("jLabel14");
         getContentPane().add(jLabelSeatAvailEco, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, -1, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        jTextShowingBookingsFI.setColumns(20);
+        jTextShowingBookingsFI.setRows(5);
+        jScrollPane3.setViewportView(jTextShowingBookingsFI);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 400, 240, 110));
 
@@ -424,9 +463,9 @@ public class BookingFrame extends javax.swing.JFrame {
         jLabelToPaLi.setToolTipText("");
         getContentPane().add(jLabelToPaLi, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 600, -1, -1));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane4.setViewportView(jTextArea2);
+        jTextAreaShowingBookingsTo.setColumns(20);
+        jTextAreaShowingBookingsTo.setRows(5);
+        jScrollPane4.setViewportView(jTextAreaShowingBookingsTo);
 
         getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 620, 240, 110));
 
@@ -442,7 +481,7 @@ public class BookingFrame extends javax.swing.JFrame {
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 740, -1, -1));
 
         jLabel12.setText("MENU");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -500,7 +539,7 @@ public class BookingFrame extends javax.swing.JFrame {
      
     dlm.clear();
         for (Food f : new FoodMenu().getFirstClassMenu()) {
-            dlm.addElement(f);
+            dlm.addElement(f.getFoodItem() + "  " + f.getPrice() + "kr");
         }
     }//GEN-LAST:event_jRadioButton1stCFocusGained
 
@@ -509,7 +548,7 @@ public class BookingFrame extends javax.swing.JFrame {
       //jListFoodMenu.removeAll(); Funkar inte!!
       dlm.removeAllElements();
         for (Food f : new FoodMenu().getEcoClassMenu()) {
-            dlm.addElement(f);
+            dlm.addElement(f.getFoodItem() + "  " + f.getPrice() + "kr");
         }
     }//GEN-LAST:event_jRadioButtonEcoClFocusGained
 
@@ -597,13 +636,13 @@ public class BookingFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextAreaShowBooking;
+    private javax.swing.JTextArea jTextAreaShowBookingHo;
+    private javax.swing.JTextArea jTextAreaShowingBookingsTo;
     private javax.swing.JTextField jTextField_EmailAdr;
     private javax.swing.JTextField jTextField_FirstName;
     private javax.swing.JTextField jTextField_LastName;
     private javax.swing.JTextField jTextField_MobileNr;
     private javax.swing.JTextField jTextField_PersonalIdentityNr;
+    private javax.swing.JTextArea jTextShowingBookingsFI;
     // End of variables declaration//GEN-END:variables
 }
