@@ -28,7 +28,7 @@ public class Seat {
         this.seatedPassenger = seatedPassenger;
     }
     
-    public Seat(String SeatId, Passenger seatedPassenger) {
+    public Seat(String SeatId, Passenger seatedPassenger) {//(JAG)MATILDA ANVÄNDER DENNA KONSTRUKTOR
         this.seatId = SeatId;
         this.seatedPassenger = seatedPassenger;
     }
@@ -50,7 +50,7 @@ public class Seat {
     }
 
     @Override
-    public String toString() {
+    public String toString() {//OM MAN SKRIVER UT SEAT FÅR DU GRATIS SEATID O PA, TÄNK PÅ DET I METODEN printOutPassengerList()!!
         return "SeatId: " + seatId + " Passenger: " + seatedPassenger;
     }
     
