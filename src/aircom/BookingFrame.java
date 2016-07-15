@@ -579,7 +579,7 @@ public class BookingFrame extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 660, -1, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 330, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -662,18 +662,19 @@ public class BookingFrame extends javax.swing.JFrame {
         int index = jListSelectedFoods.getSelectedIndex();
         dlm2.removeElementAt(index);
     }//GEN-LAST:event_jButtonRemoveFoodActionPerformed
+    
     ArrayList<Food> ar;   
     ListModel list;
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
          list = jListSelectedFoods.getModel();
         for(int i = 0; i < list.getSize(); i++){
         Object obj = list.getElementAt(i);
-            System.out.println(obj);
+            System.out.println(((Food)obj).getPrice());
 }
-    for(int i = 0; i < dlm2.toArray().length; i++){
-        System.out.println(dlm2.toArray()[i].toString());}
+  
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    
     private void TakeOffHOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TakeOffHOActionPerformed
         Thread takeOffHo =new Thread(air1);
         takeOffHo.start();
