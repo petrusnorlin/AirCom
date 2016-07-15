@@ -73,8 +73,16 @@ public class Passenger {
         this.lName = lName;
         this.personalNr = personalNr;
         this.phonenumber = phonenumber;
-        this.gender = gender;
-        
+        this.gender = gender;       
+    }
+    
+        public Passenger(FlightType ft, String fName, String lName, int personalNr, String phonenumber, GenderType gender) { //MATILDAS KONSTRUKTOR
+        this.ft = ft;
+        this.fName = fName;
+        this.lName = lName;
+        this.personalNr = personalNr;
+        this.phonenumber = phonenumber;
+        this.gender = gender;       
     }
 
     public FlightType getFt() {

@@ -28,22 +28,19 @@ public class FoodMenu {
     private static ArrayList<Food> ecoClassMenu = new ArrayList<>();
    static{
        firstClassMenu.add(new Food("VeggieLasagne", 190));
-       firstClassMenu.add(new Food("Mediterranean sallad", 180));
-       firstClassMenu.add(new Food("Beanburger de Lux", 210));
-       firstClassMenu.add(new Food("Marinade tofu with roasted veggies", 220)); 
-       firstClassMenu.add(new Food("Coffee", 18));
-       firstClassMenu.add(new Food("Soda", 23));
-       firstClassMenu.add(new Food("Ice-cream", 18));
-       firstClassMenu.add(new Food("lemonpie", 23));
+       firstClassMenu.add(new Food("Beanburger Lux", 210));
+       firstClassMenu.add(new Food("Tofu bruschetta", 170)); 
+       firstClassMenu.add(new Food("Coffee", 0));
+       firstClassMenu.add(new Food("Soda", 20));
+       firstClassMenu.add(new Food("Conjac", 23));
+       firstClassMenu.add(new Food("Lemon pie", 30));
        ecoClassMenu.add(new Food("Chili sin carne", 125));
        ecoClassMenu.add(new Food("Broccoli soup", 120));
        ecoClassMenu.add(new Food("Club Sandwich", 110));
-       ecoClassMenu.add(new Food("nudel wok", 140));
-       ecoClassMenu.add(new Food("Coffee", 0));
+       ecoClassMenu.add(new Food("Coffee", 18));
        ecoClassMenu.add(new Food("Soda", 20));
-       ecoClassMenu.add(new Food("Conjac", 30));
-       ecoClassMenu.add(new Food("panacotta", 50));
-       ecoClassMenu.add(new Food("chockladtryffel", 25));
+       ecoClassMenu.add(new Food("ice-cream", 30));
+
        
             }
     public FoodMenu() {

@@ -1,6 +1,8 @@
 package aircom;
 
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -9,7 +11,22 @@ import java.util.Date;
  */
 
 
-public class Airplane {
+public class Airplane implements Runnable{
+    
+    @Override
+    public void run(){
+        System.out.println("Plane " + plane + "is taking off");
+        try{
+            Thread.sleep(4700);
+            
+                   
+            }
+            catch (InterruptedException e)
+            {
+            e.printStackTrace();
+        }
+        System.out.println("Plane " + plane + "is landing");
+    }
     
     private static FoodMenu foodMenu = new FoodMenu(); //Måste vara statisk så statiska arraylistan inte fylls på varje gång konstruktor FoodMenu() körs.
          
@@ -17,8 +34,8 @@ public class Airplane {
     DestinationType destination;
     private Seat[] fClassSeats;
     private Seat[] ecoClassSeats;
-    private LocalDate departure;
-    private LocalDate arrival;
+    private LocalDateTime departure;
+    private LocalDateTime arrival;
     int counterEco;//SKA den var statisk?
     int counterFirst;
     
@@ -44,11 +61,11 @@ public class Airplane {
     
     
 
-    public LocalDate getDeparture() {
+    public LocalDateTime getDeparture() {
         return departure;
     }
 
-    public LocalDate getArrival() {
+    public LocalDateTime getArrival() {
         return arrival;
     }
     
@@ -61,6 +78,8 @@ public class Airplane {
     public Airplane(String plane, DestinationType destination) {
         this.destination = destination;
         this.plane = plane;
+        this.departure = LocalDateTime.now().plusMinutes(8);
+        this.arrival= LocalDateTime.now().plusMinutes(10);
         fClassSeats = new Seat[5];
         ecoClassSeats = new Seat [5];
     }
@@ -94,6 +113,10 @@ public class Airplane {
         return builder.toString();
     }
     
+    public String printOutSeatsReservationsReturningString()
+    { return  printOutFirstSeatsReservationsReturningString() + printOutEcoSeatsReservationsReturningString();
+    
+    }
     
     public int seatAvailabilityECO()
     { int available=0;

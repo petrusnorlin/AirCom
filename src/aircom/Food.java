@@ -46,7 +46,7 @@ public class Food {
     //OVERRIDDEN Object methods:
     @Override
     public String toString() {
-        return foodItem;
+        return foodItem + "  " + price + "kr";
     }
 
     @Override

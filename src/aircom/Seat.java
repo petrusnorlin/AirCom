@@ -51,7 +51,7 @@ public class Seat {
 
     @Override
     public String toString() {//OM MAN SKRIVER UT SEAT FÅR DU GRATIS SEATID O PA, TÄNK PÅ DET I METODEN printOutPassengerList()!!
-        return "SeatId: " + seatId + " Passenger: " + seatedPassenger;
+        return "SeatId: " + seatId + " " + seatedPassenger;
     }
     
     
