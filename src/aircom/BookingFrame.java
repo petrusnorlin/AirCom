@@ -29,19 +29,16 @@ public class BookingFrame extends javax.swing.JFrame {
     DefaultListModel dlm = new DefaultListModel();//Denna kommer användas till foodmenu
     
     
-    
-    public void calculateSelectedFoodCosts()
+    ListModel list; //SUMMERAR TOTALT PRIS MAT
+    public Integer calculateSelectedFoodCosts()
     {
-        ListModel list = jListSelectedFoods.getModel();
-    for(int i = 0; i < list.getSize(); i++){
-        System.out.println(list.getElementAt(i));
-
-        }
-       for(int index : jListSelectedFoods.getSelectedIndices()) 
-       {
-        System.out.println(dlm2.getElementAt(index));
+        Integer sumFoods =0;
+        list = jListSelectedFoods.getModel();
+        for(int i = 0; i < list.getSize(); i++){
+        Object obj = list.getElementAt(i);
+          sumFoods +=  ((Food)obj).getPrice();
        }
-                 
+        return sumFoods;                
     }
     
     public void printToRightTextArea4ECO (int pl)
@@ -157,8 +154,9 @@ public class BookingFrame extends javax.swing.JFrame {
 //            eat = false;
 //        }
 
-        //if(jTextField_FirstName.getText() == "")
-        fname = jTextField_FirstName.getText();
+
+        {
+        fname = jTextField_FirstName.getText();}
         lname = jTextField_LastName.getText();
         persnr = (Integer.parseInt(jTextField_PersonalIdentityNr.getText()));
         phonenr = jTextField_MobileNr.getText();
@@ -196,8 +194,10 @@ public class BookingFrame extends javax.swing.JFrame {
                 System.out.println("Full booked, 5/5"); //Ska vara ifall det är fullt i arrayen!!!
             }
         }
-        
-        
+
+        jTextAreaSumPrice.setText("");
+        jTextAreaSumPrice.setText("Total Food price: " + "\n" + (calculateSelectedFoodCosts().toString()));
+        jTextAreaSumPrice.setEnabled(true);
        // jTextAreaShowBooking.setText("Reservations: " + "\n" + printOutPassengerList(p));
         System.out.println("");
 
@@ -273,10 +273,6 @@ public class BookingFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
-        jLabelRequiredfn = new javax.swing.JLabel();
-        jLabelRequiredln = new javax.swing.JLabel();
-        jLabelRequiredpnr = new javax.swing.JLabel();
-        jLabelRequiredmnr = new javax.swing.JLabel();
         jComboBoxSelectDestination = new javax.swing.JComboBox<>();
         jLabelFlight = new javax.swing.JLabel();
         jLabelDeparture = new javax.swing.JLabel();
@@ -304,13 +300,12 @@ public class BookingFrame extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaSumPrice = new javax.swing.JTextArea();
         jLabel15 = new javax.swing.JLabel();
         jButtonSelectFood = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
         jListSelectedFoods = new javax.swing.JList<>();
         jButtonRemoveFood = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -415,29 +410,6 @@ public class BookingFrame extends javax.swing.JFrame {
         jLabel11.setText("jLabel11");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 350, 80));
 
-        jLabelRequiredfn.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        jLabelRequiredfn.setForeground(new java.awt.Color(255, 51, 51));
-        jLabelRequiredfn.setText("WarningNotCorrectFname");
-        jLabelRequiredfn.setToolTipText("");
-        getContentPane().add(jLabelRequiredfn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, -1, -1));
-
-        jLabelRequiredln.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        jLabelRequiredln.setForeground(new java.awt.Color(255, 51, 51));
-        jLabelRequiredln.setText("WarningNotCorrectLname");
-        jLabelRequiredln.setToolTipText("");
-        getContentPane().add(jLabelRequiredln, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, -1, -1));
-
-        jLabelRequiredpnr.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        jLabelRequiredpnr.setForeground(new java.awt.Color(255, 51, 51));
-        jLabelRequiredpnr.setText("WarningNotCorrectPnr");
-        jLabelRequiredpnr.setToolTipText("");
-        getContentPane().add(jLabelRequiredpnr, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, -1, -1));
-
-        jLabelRequiredmnr.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        jLabelRequiredmnr.setForeground(new java.awt.Color(255, 51, 51));
-        jLabelRequiredmnr.setText("WarningNotCorrectMobnr");
-        getContentPane().add(jLabelRequiredmnr, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, -1, -1));
-
         jComboBoxSelectDestination.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select destination", "HONOLULU", "FIJI", "TONGA" }));
         jComboBoxSelectDestination.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -538,13 +510,13 @@ public class BookingFrame extends javax.swing.JFrame {
         jLabel14.setToolTipText("");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, -1, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setEnabled(false);
-        jTextArea1.setFocusCycleRoot(true);
-        jScrollPane6.setViewportView(jTextArea1);
+        jTextAreaSumPrice.setColumns(20);
+        jTextAreaSumPrice.setRows(5);
+        jTextAreaSumPrice.setEnabled(false);
+        jTextAreaSumPrice.setFocusCycleRoot(true);
+        jScrollPane6.setViewportView(jTextAreaSumPrice);
 
-        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, 180, 160));
+        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, 180, 150));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel15.setText("Receipt:");
@@ -573,20 +545,16 @@ public class BookingFrame extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonRemoveFood, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 520, 100, -1));
 
-        jButton5.setText("Test print selection");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 330, -1, -1));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         registerPassanger(air1);
+dlm2.removeAllElements();
+        
+//         jTextAreaSumPrice.setText("");
+//         jTextAreaSumPrice.setEnabled(false);
         jComboBoxSelectDestinationActionPerformed(evt);//FICK HJÄLP AV MATTIAS ATT KALLA PÅ EVENTET IGEN, typ blir som att refreasha ComboBox..
 
         //persnr= (int)(Double.parseDouble(jTextField_PersonalIdentityNr.getText()));
@@ -595,7 +563,9 @@ public class BookingFrame extends javax.swing.JFrame {
 
     private void jComboBoxSelectDestinationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelectDestinationActionPerformed
         //if(jComboBoxSelectDestination.getSelectedItem()== "HONOLULU")
+        
 
+        
         String SelectedValue = jComboBoxSelectDestination.getSelectedItem().toString();
         // Display
         switch (SelectedValue) {
@@ -604,6 +574,15 @@ public class BookingFrame extends javax.swing.JFrame {
                 jLabelDeparture.setText("D: " + air1.getDeparture());
                 jLabelArrival.setText("A: " + air1.getArrival());
                 pl = 1;
+
+                if(airplaneToUse(pl).seatAvailabilityECO() > 0)
+         {
+             jRadioButtonEcoCl.setEnabled(true);
+         }
+        if((airplaneToUse(pl).seatAvailabilityECO() > 0))
+         {
+             jRadioButtonEcoCl.setEnabled(true);
+         }
                 printOutSeatAvailbility();
                 //airplaneToUse(pl).printOutEcoSeatsReservations();
                 //airplaneToUse(pl).printOutFirstClassSeatsReservations();
@@ -613,6 +592,15 @@ public class BookingFrame extends javax.swing.JFrame {
                 jLabelDeparture.setText("D: " + air2.getDeparture());
                 jLabelArrival.setText("A: " + air2.getArrival());
                 pl = 2;
+
+                if(airplaneToUse(pl).seatAvailabilityECO() > 0)
+         {
+             jRadioButtonEcoCl.setEnabled(true);
+         }
+        if((airplaneToUse(pl).seatAvailabilityECO() > 0))
+         {
+             jRadioButton1stC.setEnabled(true);
+         }
                 printOutSeatAvailbility();
                 //airplaneToUse(pl).printOutEcoSeatsReservations();
                 //airplaneToUse(pl).printOutFirstClassSeatsReservations();
@@ -622,6 +610,15 @@ public class BookingFrame extends javax.swing.JFrame {
                 jLabelDeparture.setText("D: " + air3.getDeparture());
                 jLabelArrival.setText("A: " + air3.getArrival());
                 pl = 3;
+
+                if(airplaneToUse(pl).seatAvailabilityECO() > 0)
+         {
+             jRadioButtonEcoCl.setEnabled(true);
+         }
+        if((airplaneToUse(pl).seatAvailabilityECO() > 0))
+         {
+             jRadioButtonEcoCl.setEnabled(true);
+         }
                 printOutSeatAvailbility();
                 //airplaneToUse(pl).printOutEcoSeatsReservations();
                 //airplaneToUse(pl).printOutFirstClassSeatsReservations();
@@ -663,17 +660,8 @@ public class BookingFrame extends javax.swing.JFrame {
         dlm2.removeElementAt(index);
     }//GEN-LAST:event_jButtonRemoveFoodActionPerformed
     
-    ArrayList<Food> ar;   
-    ListModel list;
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-         list = jListSelectedFoods.getModel();
-        for(int i = 0; i < list.getSize(); i++){
-        Object obj = list.getElementAt(i);
-            System.out.println(((Food)obj).getPrice());
-}
-  
-    }//GEN-LAST:event_jButton5ActionPerformed
-
+//HÄMTAR PRISET FRÅN ELEMENTETI ANDRA LISTAN   
+    ListModel list2;
     
     private void TakeOffHOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TakeOffHOActionPerformed
         Thread takeOffHo =new Thread(air1);
@@ -735,7 +723,6 @@ public class BookingFrame extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonRemoveFood;
     private javax.swing.JButton jButtonSelectFood;
     private javax.swing.JComboBox<String> jComboBoxSelectDestination;
@@ -759,10 +746,6 @@ public class BookingFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFiPaLi;
     private javax.swing.JLabel jLabelFlight;
     private javax.swing.JLabel jLabelHoPaLi;
-    private javax.swing.JLabel jLabelRequiredfn;
-    private javax.swing.JLabel jLabelRequiredln;
-    private javax.swing.JLabel jLabelRequiredmnr;
-    private javax.swing.JLabel jLabelRequiredpnr;
     private javax.swing.JLabel jLabelSeatAvailEco;
     private javax.swing.JLabel jLabelSeatsAvailFIRST;
     private javax.swing.JLabel jLabelToPaLi;
@@ -782,9 +765,9 @@ public class BookingFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextAreaShowBookingHo;
     private javax.swing.JTextArea jTextAreaShowingBookingsTo;
+    private javax.swing.JTextArea jTextAreaSumPrice;
     private javax.swing.JTextField jTextField_FirstName;
     private javax.swing.JTextField jTextField_LastName;
     private javax.swing.JTextField jTextField_MobileNr;
