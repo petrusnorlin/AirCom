@@ -308,6 +308,8 @@ public class BookingFrame extends javax.swing.JFrame {
         jButtonRemoveFood = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1250, 900));
+        setPreferredSize(new java.awt.Dimension(1150, 813));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Jokerman", 1, 24)); // NOI18N
@@ -425,11 +427,12 @@ public class BookingFrame extends javax.swing.JFrame {
         jLabelArrival.setToolTipText("");
         getContentPane().add(jLabelArrival, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, -1));
 
-        jTextAreaShowBookingHo.setColumns(20);
+        jTextAreaShowBookingHo.setColumns(10);
         jTextAreaShowBookingHo.setRows(5);
+        jTextAreaShowBookingHo.setPreferredSize(new java.awt.Dimension(105, 94));
         jScrollPane1.setViewportView(jTextAreaShowBookingHo);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 140, 170, 120));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 140, 190, 150));
 
         jScrollPane2.setViewportView(jListFoodMenu);
 
@@ -439,14 +442,15 @@ public class BookingFrame extends javax.swing.JFrame {
         jLabelSeatAvailEco.setToolTipText("");
         getContentPane().add(jLabelSeatAvailEco, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, -1, -1));
 
-        jTextShowingBookingsFI.setColumns(20);
+        jTextShowingBookingsFI.setColumns(10);
         jTextShowingBookingsFI.setRows(5);
+        jTextShowingBookingsFI.setPreferredSize(new java.awt.Dimension(105, 94));
         jScrollPane3.setViewportView(jTextShowingBookingsFI);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 340, 170, 110));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 360, 190, 150));
 
         jLabelFiPaLi.setText("FIJI Flight Passanger list:");
-        getContentPane().add(jLabelFiPaLi, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 320, -1, -1));
+        getContentPane().add(jLabelFiPaLi, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 340, -1, -1));
 
         jLabelHoPaLi.setText("HONOLULU Flight Passenger list:");
         jLabelHoPaLi.setToolTipText("");
@@ -454,13 +458,14 @@ public class BookingFrame extends javax.swing.JFrame {
 
         jLabelToPaLi.setText("TONGA Flight Passenger list:");
         jLabelToPaLi.setToolTipText("");
-        getContentPane().add(jLabelToPaLi, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 520, -1, -1));
+        getContentPane().add(jLabelToPaLi, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 560, -1, -1));
 
-        jTextAreaShowingBookingsTo.setColumns(20);
+        jTextAreaShowingBookingsTo.setColumns(10);
         jTextAreaShowingBookingsTo.setRows(5);
+        jTextAreaShowingBookingsTo.setPreferredSize(new java.awt.Dimension(105, 94));
         jScrollPane4.setViewportView(jTextAreaShowingBookingsTo);
 
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 540, 170, 110));
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 580, 190, 150));
 
         TakeOffHO.setText("TakeOff");
         TakeOffHO.setToolTipText("");
@@ -469,7 +474,7 @@ public class BookingFrame extends javax.swing.JFrame {
                 TakeOffHOActionPerformed(evt);
             }
         });
-        getContentPane().add(TakeOffHO, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 270, 80, -1));
+        getContentPane().add(TakeOffHO, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 300, 80, -1));
 
         TakeOffFI.setText("TakeOff");
         TakeOffFI.setToolTipText("");
@@ -478,7 +483,7 @@ public class BookingFrame extends javax.swing.JFrame {
                 TakeOffFIActionPerformed(evt);
             }
         });
-        getContentPane().add(TakeOffFI, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 460, 80, -1));
+        getContentPane().add(TakeOffFI, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 520, 80, -1));
 
         TakeOffTO.setText("TakeOff");
         TakeOffTO.setToolTipText("");
@@ -487,7 +492,7 @@ public class BookingFrame extends javax.swing.JFrame {
                 TakeOffTOActionPerformed(evt);
             }
         });
-        getContentPane().add(TakeOffTO, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 660, 80, -1));
+        getContentPane().add(TakeOffTO, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 740, 80, -1));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 580, 10));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -510,7 +515,7 @@ public class BookingFrame extends javax.swing.JFrame {
         jLabel14.setToolTipText("");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, -1, -1));
 
-        jTextAreaSumPrice.setColumns(20);
+        jTextAreaSumPrice.setColumns(7);
         jTextAreaSumPrice.setRows(5);
         jTextAreaSumPrice.setEnabled(false);
         jTextAreaSumPrice.setFocusCycleRoot(true);
