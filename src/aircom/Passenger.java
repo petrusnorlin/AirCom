@@ -74,7 +74,7 @@ public class Passenger {
         }
         return sum;
     }
-    //Jimmys till‰gg slutar h‰r
+    //Jimmys till√§gg slutar h√§r
 
     public String getChoseFood() {
         return choseFood;
