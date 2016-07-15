@@ -1,5 +1,8 @@
 package aircom;
 
+import aircom.PlaneStateType;
+import aircom.PlaneStateType;
+
 /**
  * Klass för att starta flygplanen i separata trådar
  * 
@@ -9,7 +12,7 @@ package aircom;
  * 
  * @ Uppd   v1.1    Gjort så att klassen kan anropas från menyn och tar in flygplanobjektens egna namn [JD]
  */
-class AirplaneThread implements Runnable{
+public class AirplaneThread implements Runnable{
 
     private Thread t;
     private String flightID;
