@@ -78,7 +78,7 @@ public class CalculateCosts {
                 } else if (chair.getSeatedPassenger().getFt() == FlightType.ECOCLASS) {
                     ticketPrice = 5000;
                 }
-                foodPrice = chair.getSeatedPassenger().getFoodOrderPrice();//för att få den enskilda passagerarens matpris
+                foodPrice = chair.getSeatedPassenger().getFoodOrderPrice();
                 sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, foodPrice);
                 //sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, ui.getTotalFoodPrice());
             }
