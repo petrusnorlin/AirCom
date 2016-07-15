@@ -25,6 +25,8 @@ public class Passenger {
     private GenderType gender;
     private Boolean eat;
     private String choseFood;
+    Integer firstTicketprice = 20000;
+    Integer ecoTicketPrice = 5000;
     
     private int foodOrderPrice;//tillagt av Jimmy
     private long personNr;//tillagt av Jimmy
@@ -43,6 +45,20 @@ public class Passenger {
         this.gender = gender;
         
     }
+
+    public Integer getPrice() {
+        if(ft == FlightType.FIRSTCLASS)
+        return firstTicketprice;
+       if(ft == FlightType.ECOCLASS) 
+         return ecoTicketPrice;
+       else return null;
+    }
+
+    public Integer getEcoTicketPrice() {
+        return ecoTicketPrice;
+    }
+    
+    
     
     public long getPhoneNr() {
         return phoneNr;

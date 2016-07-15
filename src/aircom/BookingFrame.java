@@ -19,13 +19,14 @@ import javax.swing.ListModel;
 public class BookingFrame extends javax.swing.JFrame {
 
     //DestinationType[] destinations = {DestinationType.HONOLULU, DestinationType.FIJI, DestinationType.TONGA};
-    ArrayList<Passenger> passengerlist = new ArrayList<Passenger>();
+   
     Passenger p;
     int pl;
     Airplane air1 = new Airplane("HOLU123", DestinationType.HONOLULU);
     Airplane air2 = new Airplane("FIJ456", DestinationType.FIJI);
     Airplane air3 = new Airplane("TON789", DestinationType.TONGA);
     String destination;
+    
     DefaultListModel dlm = new DefaultListModel();//Denna kommer användas till foodmenu
     
     
@@ -38,7 +39,7 @@ public class BookingFrame extends javax.swing.JFrame {
         Object obj = list.getElementAt(i);
           sumFoods +=  ((Food)obj).getPrice();
        }
-        return sumFoods;                
+        return sumFoods ;                
     }
     
     public void printToRightTextArea4ECO (int pl)
@@ -87,15 +88,7 @@ public class BookingFrame extends javax.swing.JFrame {
     }
 
     //METODER
-    public String printOutPassengerList(Passenger pa) {//HÄR SKA DU SKRIVA UT  ÄVEN FLIGHTID O SEATPLATS!!!!
-        StringBuilder builder = new StringBuilder();
-        for (Passenger passenger : passengerlist) {
-            //jTextAreaShowBooking.setText(passenger + "\n");
-            builder.append(passenger).append("\n"); // <---- FÖR VARJE LOOP passenger.toString() + radbrytning!!!
-            //System.out.println(pa);
-        }
-        return builder.toString();
-    }
+    
 
     public Airplane airplaneToUse(int i) {
         if (i == 1) {
@@ -109,6 +102,8 @@ public class BookingFrame extends javax.swing.JFrame {
         }
     }
 
+    
+    
     public void registerPassanger(Airplane air) {
         FlightType ft = null;
         Boolean eat;
@@ -173,7 +168,7 @@ public class BookingFrame extends javax.swing.JFrame {
         }
 
         p = new Passenger(ft, fname, lname, persnr, phonenr, gt);
-        passengerlist.add(p);
+        //passengerlist.add(p);
 
         if (ft == FlightType.ECOCLASS) {
             try {
@@ -196,7 +191,8 @@ public class BookingFrame extends javax.swing.JFrame {
         }
 
         jTextAreaSumPrice.setText("");
-        jTextAreaSumPrice.setText("Total Food price: " + "\n" + (calculateSelectedFoodCosts().toString()));
+        jTextAreaSumPrice.setText("Food: " + "\n" + (calculateSelectedFoodCosts().toString())+ "\n" + "Ticket:" + "\n" + p.getPrice().toString() + "\n" + "Total:" 
+                +"\n" + (calculateSelectedFoodCosts()+ (p.getPrice())));
         jTextAreaSumPrice.setEnabled(true);
        // jTextAreaShowBooking.setText("Reservations: " + "\n" + printOutPassengerList(p));
         System.out.println("");
@@ -580,11 +576,11 @@ dlm2.removeAllElements();
                 jLabelArrival.setText("A: " + air1.getArrival());
                 pl = 1;
 
-                if(airplaneToUse(pl).seatAvailabilityECO() > 0)
+                if(airplaneToUse(pl).seatAvailabilityFirst()> 0)
          {
-             jRadioButtonEcoCl.setEnabled(true);
+             jRadioButton1stC.setEnabled(true);
          }
-        if((airplaneToUse(pl).seatAvailabilityECO() > 0))
+        if(airplaneToUse(pl).seatAvailabilityECO() > 0)
          {
              jRadioButtonEcoCl.setEnabled(true);
          }
@@ -602,7 +598,7 @@ dlm2.removeAllElements();
          {
              jRadioButtonEcoCl.setEnabled(true);
          }
-        if((airplaneToUse(pl).seatAvailabilityECO() > 0))
+        if((airplaneToUse(pl).seatAvailabilityFirst()> 0))
          {
              jRadioButton1stC.setEnabled(true);
          }
@@ -616,9 +612,9 @@ dlm2.removeAllElements();
                 jLabelArrival.setText("A: " + air3.getArrival());
                 pl = 3;
 
-                if(airplaneToUse(pl).seatAvailabilityECO() > 0)
+                if(airplaneToUse(pl).seatAvailabilityFirst()> 0)
          {
-             jRadioButtonEcoCl.setEnabled(true);
+             jRadioButton1stC.setEnabled(true);
          }
         if((airplaneToUse(pl).seatAvailabilityECO() > 0))
          {
