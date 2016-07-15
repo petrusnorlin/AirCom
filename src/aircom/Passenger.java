@@ -74,6 +74,7 @@ public class Passenger {
         }
         return sum;
     }
+    //Jimmys tillägg slutar här
 
 
     public String getChoseFood() {
