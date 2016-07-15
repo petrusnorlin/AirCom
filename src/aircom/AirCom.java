@@ -23,15 +23,15 @@ public class AirCom {
         
         System.out.println("Welcome to AirCom!");
         
-        
-        System.out.println("Menu for 1st Class passengers:");  
-        printFoodMenu(new FoodMenu().getFirstClassMenu());
-        System.out.println(air.getFoodMenu().getFirstClassMenu());
-        System.out.println("Menu for ECO Class passengers:");
-        printFoodMenu(new FoodMenu().getEcoClassMenu());
-        System.out.println();
-        System.out.println();
-        printFoodMenuOld(FoodMenu.getEcoClassMenuOld());
+        //bortkommenterat av Jimmy inför presentationen
+//        System.out.println("Menu for 1st Class passengers:");  
+//        printFoodMenu(new FoodMenu().getFirstClassMenu());
+//        System.out.println(air.getFoodMenu().getFirstClassMenu());
+//        System.out.println("Menu for ECO Class passengers:");
+//        printFoodMenu(new FoodMenu().getEcoClassMenu());
+//        System.out.println();
+//        System.out.println();
+//        printFoodMenuOld(FoodMenu.getEcoClassMenuOld());
 
         //la jag(Jimmy) till
 //        AirplanePetrus plane = new AirplanePetrus();

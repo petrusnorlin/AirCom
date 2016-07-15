@@ -1,11 +1,20 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package aircom;
 
+import aircom.FlightClass;
+import aircom.Passenger;
+import aircom.Seat;
 import java.util.ArrayList;
 
 /**
  *
- * @author Petrus, Jimmy, Joel
+ * @author Petrus
+ * 
+ * Har lagt till 2 break i switch satsen i isTherePassengerSpace annars blir det knas
  */
 public class AirplanePetrus {
     
@@ -33,34 +42,33 @@ public class AirplanePetrus {
         return economyClassSeats;
     }
  
-    //FlightClass flightClass ändrat av Jimmy till FlightType flightType
-    public boolean isTherePassengerSpace(FlightType flightType) {
-        if (null != flightType) switch (flightType) {
-            case FIRSTCLASS://flightClass bytt till flightType
-                //'FirstClass' bytt till 'FIRSTCLASS'
+    public boolean isTherePassengerSpace(FlightClass flightClass) {//Kollar om det finns plats kvar
+        if (null != flightClass) switch (flightClass) {
+            case FirstClass:
                 //Om FirstClass class lägg upp denna
                 if (firstClassSeats.size()<5)
                 return true;
-            case ECOCLASS://'EconomyClass' bytt till 'ECOCLASS'
+                break;
+            case EconomyClass:
                 //Om economy class lägg upp denna
                 if (economyClassSeats.size()<5)
                 return true;
+                break;
             default:
                 return false;//unknown
         }
         return false;//om det inte finns plats
     } 
     
-    //FlightClass flightClass har jag(Jimmy) ändrat till 'FlightType flightType'
-    public int addPassengerToSeat(Passenger passenger, FlightType flightType) {
-        if (!isTherePassengerSpace(flightType))//Om det inte finns plats för passaeraren
-            return -1;//'flightClass' var det ovan
-        if (null != flightType) switch (flightType) { //'flightClass' var det innan
-            case FIRSTCLASS://flightClass bytt till flightType
+    public int addPassengerToSeat(Passenger passenger, FlightClass flightClass) {
+        if (!isTherePassengerSpace(flightClass))//Om det inte finns plats för passaeraren
+            return -1;
+        if (null != flightClass) switch (flightClass) {
+            case FirstClass:
                 //Om FirstClass class lägg upp denna
                 firstClassSeats.add(new Seat( firstClassSeats.size()+1, passenger));
                 return 1;
-            case ECOCLASS://'EconomyClass' bytt till 'ECOCLASS'
+            case EconomyClass:
                 //Om economy class lägg upp denna
                 economyClassSeats.add(new Seat( economyClassSeats.size()+1, passenger));
                 return 2;
