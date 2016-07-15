@@ -294,13 +294,13 @@ public class UI {
         }
         else if (flightType == FlightType.FIRSTCLASS) {
             if (dest.equals("Honolulu")) {
-                flyg.getEcoClassSeats()[flyg.counterEco] = new Seat("B" + flyg.counterEco++, customer);
+                flyg.getfClassSeats()[flyg.counterFirst] = new Seat("B" + flyg.counterFirst++, customer);
             }
             else if (dest.equals("Fiji")) {
-                flyg2.getEcoClassSeats()[flyg2.counterEco] = new Seat("B" + flyg2.counterEco++, customer);
+                flyg2.getfClassSeats()[flyg2.counterFirst] = new Seat("B" + flyg2.counterFirst++, customer);
             }
             else if (dest.equals("Tonga")) {
-                flyg3.getEcoClassSeats()[flyg3.counterEco] = new Seat("B" + flyg3.counterEco++, customer);
+                flyg3.getfClassSeats()[flyg3.counterFirst] = new Seat("B" + flyg3.counterFirst++, customer);
             }
         }
         
@@ -355,22 +355,22 @@ public class UI {
                 case 0:
                     System.exit(0);
                 case 1:
-                    if(flyg.getfClassSeats().length > 0) {//flyg.getfClassSeats().length > 0
-                        airlineIncome = calcCosts.calculateAirlineIncome2(flyg.getfClassSeats(), this);
+                    if(flyg.counterFirst > 0) {//flyg.getfClassSeats().length > 0
+                        airlineIncome = airlineIncome + calcCosts.calculateAirlineIncome2(flyg.getfClassSeats(), this);
                     }
-                    if(flyg2.getfClassSeats().length > 0) {
+                    if(flyg2.counterFirst > 0) {
                         airlineIncome = airlineIncome + calcCosts.calculateAirlineIncome2(flyg2.getfClassSeats(), this);
                     }
-                    if(flyg3.getfClassSeats().length > 0) {
+                    if(flyg3.counterFirst > 0) {
                         airlineIncome = airlineIncome + calcCosts.calculateAirlineIncome2(flyg3.getfClassSeats(), this);
                     }
-                    if(flyg.getEcoClassSeats().length > 0) {
-                        airlineIncomeEconomy = calcCosts.calculateAirlineIncome2(flyg.getEcoClassSeats(), this);
+                    if(flyg.counterEco > 0) {//.getEcoClassSeats().length
+                        airlineIncomeEconomy = airlineIncomeEconomy + calcCosts.calculateAirlineIncome2(flyg.getEcoClassSeats(), this);
                     }
-                    if(flyg2.getEcoClassSeats().length > 0) {
+                    if(flyg2.counterEco > 0) {
                         airlineIncomeEconomy = airlineIncomeEconomy + calcCosts.calculateAirlineIncome2(flyg2.getEcoClassSeats(), this);
                     }
-                    if(flyg3.getEcoClassSeats().length > 0) {
+                    if(flyg3.counterEco > 0) {
                         airlineIncomeEconomy = airlineIncomeEconomy + calcCosts.calculateAirlineIncome2(flyg3.getEcoClassSeats(), this);
                     }
                     
@@ -383,12 +383,24 @@ public class UI {
                     calcCosts.printAirlineIncome(airlineIncome + airlineIncomeEconomy);// + airlineIncomeFirst);
                     break;
                 case 2:
-                    airlineIncome = calcCosts.calculateAirlineIncome2(flyg.getfClassSeats(), this);
-                    airlineIncome = airlineIncome + calcCosts.calculateAirlineIncome2(flyg2.getfClassSeats(), this);
-                    airlineIncome = airlineIncome + calcCosts.calculateAirlineIncome2(flyg3.getfClassSeats(), this);
-                    airlineIncomeEconomy = calcCosts.calculateAirlineIncome2(flyg.getEcoClassSeats(), this);
-                    airlineIncomeEconomy = airlineIncomeEconomy + calcCosts.calculateAirlineIncome2(flyg2.getEcoClassSeats(), this);
-                    airlineIncomeEconomy = airlineIncomeEconomy + calcCosts.calculateAirlineIncome2(flyg3.getEcoClassSeats(), this);
+                    if(flyg.counterFirst > 0) {//flyg.getfClassSeats().length > 0
+                        airlineIncome = airlineIncome + calcCosts.calculateAirlineIncome2(flyg.getfClassSeats(), this);
+                    }
+                    if(flyg2.counterFirst > 0) {
+                        airlineIncome = airlineIncome + calcCosts.calculateAirlineIncome2(flyg2.getfClassSeats(), this);
+                    }
+                    if(flyg3.counterFirst > 0) {
+                        airlineIncome = airlineIncome + calcCosts.calculateAirlineIncome2(flyg3.getfClassSeats(), this);
+                    }
+                    if(flyg.counterEco > 0) {//.getEcoClassSeats().length
+                        airlineIncomeEconomy = airlineIncomeEconomy + calcCosts.calculateAirlineIncome2(flyg.getEcoClassSeats(), this);
+                    }
+                    if(flyg2.counterEco > 0) {
+                        airlineIncomeEconomy = airlineIncomeEconomy + calcCosts.calculateAirlineIncome2(flyg2.getEcoClassSeats(), this);
+                    }
+                    if(flyg3.counterEco > 0) {
+                        airlineIncomeEconomy = airlineIncomeEconomy + calcCosts.calculateAirlineIncome2(flyg3.getEcoClassSeats(), this);
+                    }
                     
                     //dessa 2 bortkommenterade för att använda dom 6 ovan istället. Annars skulle dessa användas med Petrus plan
                     //airlineIncome = calcCosts.calculateAirlineIncome(plane.getFirstClassSeats(), this);
@@ -423,7 +435,15 @@ public class UI {
                 //for (Food food : firstClassFood) {
                 for (int a = 0; a < firstClassFood.size(); a++) {    
                     i++;
-                    System.out.println((a+1) + ". " + firstClassFood.get(a).toString());//food
+                    if (firstClassFood.get(a).toString().length() > 20) {
+                        System.out.println((a+1) + ". " + firstClassFood.get(a).toString() + "\t\t\t" + firstClassFood.get(a).getPrice());//food
+                    }
+                    else if (firstClassFood.get(a).toString().length() > 30) {
+                        System.out.println((a+1) + ". " + firstClassFood.get(a).toString() + "\t\t" + firstClassFood.get(a).getPrice());
+                    }
+                    else {
+                        System.out.println((a+1) + ". " + firstClassFood.get(a).toString() + "\t\t\t\t" + firstClassFood.get(a).getPrice());
+                    }
                 }
 
                 //Iterator it = FoodMenu.firstClassMenuOld.entrySet().iterator();
@@ -434,6 +454,8 @@ public class UI {
                 //HashMap.Entry pair = (HashMap.Entry) it.next();
                 //System.out.println(i + ". " + pair.getKey());//it.toString()
                 //}
+                System.out.println();
+                System.out.println("0. End food menu");
                 menyVal = reader.nextInt();
                 if (menyVal == 0) {
                     break;
@@ -447,7 +469,7 @@ public class UI {
                 //for (Food food : economyClassFood) {
                 for (int a = 0; a < economyClassFood.size(); a++) {
                     i++;
-                    System.out.println((a+1) + ". " + economyClassFood.get(a).toString());
+                    System.out.println((a+1) + ". " + economyClassFood.get(a).toString() + "\t\t\t\t" + economyClassFood.get(a).getPrice());
                 }
                 //Iterator it = FoodMenu.ecoClassMenuOld.entrySet().iterator();
                 //int i = 0;
@@ -459,6 +481,8 @@ public class UI {
                 
                 //Food f = new Food(economyClassFood.get(reader.nextInt()-1).getFoodItem());
                 //foodChoices.add(f);
+                System.out.println();
+                System.out.println("0. End food menu");
                 menyVal = reader.nextInt();
                 if (menyVal == 0) {
                     break;

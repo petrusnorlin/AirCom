@@ -39,12 +39,15 @@ public class CalculateCosts {
         
         //for (Passenger pass : arrayPass) {
         for (Seat chair : arrayPass) {
-            if (chair.getSeatedPassenger().getFt() == FlightType.FIRSTCLASS) {
-                ticketPrice = 20000;
+            if (chair != null){
+                if (chair.getSeatedPassenger().getFt() == FlightType.FIRSTCLASS) {
+                    ticketPrice = 20000;
+                } else if (chair.getSeatedPassenger().getFt() == FlightType.ECOCLASS) {
+                    ticketPrice = 5000;
+                }
+                sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, ui.getTotalFoodPrice());
             }
-            else if (chair.getSeatedPassenger().getFt() == FlightType.ECOCLASS) {
-                ticketPrice = 5000;
-            }
+            
             
             //bijettPris-metod ska anropas här under...
             //...och även matpriset
@@ -52,10 +55,9 @@ public class CalculateCosts {
             //pass.planeClass
             //sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(chair.seatedPassenger.getFt() * sumPassengerPrices);
             //sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, chair.getSeatedPassenger().calculateFoodOrder());
-            sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, ui.getTotalFoodPrice());
             
-        }
-        
+            
+        }        
         return sumPassengerPrices;
     }
     
@@ -67,11 +69,14 @@ public class CalculateCosts {
         
         //for (Passenger pass : arrayPass) {
         for (Seat chair : arrayPass) {
-            if (chair.getSeatedPassenger().getFt() == FlightType.FIRSTCLASS) {
-                ticketPrice = 20000;
-            }
-            else if (chair.getSeatedPassenger().getFt() == FlightType.ECOCLASS) {
-                ticketPrice = 5000;
+            if (chair != null){
+            //if (chair.getSeatedPassenger() != null) {
+                if (chair.getSeatedPassenger().getFt() == FlightType.FIRSTCLASS) {
+                    ticketPrice = 20000;
+                } else if (chair.getSeatedPassenger().getFt() == FlightType.ECOCLASS) {
+                    ticketPrice = 5000;
+                }
+                sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, ui.getTotalFoodPrice());
             }
             
             //bijettPris-metod ska anropas här under...
@@ -80,7 +85,7 @@ public class CalculateCosts {
             //pass.planeClass
             //sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(chair.seatedPassenger.getFt() * sumPassengerPrices);
             //sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, chair.getSeatedPassenger().calculateFoodOrder());
-            sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, ui.getTotalFoodPrice());
+            
             
         }
         
