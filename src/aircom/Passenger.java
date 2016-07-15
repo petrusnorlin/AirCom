@@ -26,8 +26,55 @@ public class Passenger {
     private Boolean eat;
     private String choseFood;
     
+    private int foodOrderPrice;//tillagt av Jimmy
+    private long personNr;//tillagt av Jimmy
+    private long phoneNr;//tillagt av Jimmy
    
     ArrayList<Food> foodOrder = new ArrayList<Food>();
+    
+    //tillagt av Jimmy
+    public Passenger(FlightType ft, Boolean eat, String fName, String lName, long personNr, long phonenumber, GenderType gender) {
+        this.ft = ft;
+        this.eat = eat;
+        this.fName = fName;
+        this.lName = lName;
+        this.personNr = personNr;
+        this.phoneNr = phoneNr;
+        this.gender = gender;
+        
+    }
+    
+    public long getPhoneNr() {
+        return phoneNr;
+    }
+    
+    public int getFoodOrderPrice() {
+        return foodOrderPrice;
+    }
+    
+    public void setFoodOrderPrice(int price) {
+        foodOrderPrice = price;
+    }
+    
+    public ArrayList<Food> getFoodOrder() {
+        return foodOrder;
+    }
+    
+    public void setFoodOrder(ArrayList<Food> orderedFood) {
+        for (Food f : orderedFood) {
+        	foodOrder.add(f);
+        }
+    }
+    
+    public int calcFoodOrderPrice(ArrayList<Food> orderedFood)
+    {
+        int sum = 0;
+        for (Food food : foodOrder) {
+           sum += food.getPrice(); 
+        }
+        return sum;
+    }
+    //Jimmys tillägg slutar här
 
     public String getChoseFood() {
         return choseFood;

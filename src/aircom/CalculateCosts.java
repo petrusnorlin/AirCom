@@ -18,6 +18,8 @@ public class CalculateCosts {
     //...matpris ska hamna i Passenger har vi bestämt just nu
     //public int cal
 
+	//int sumPassengerPrices = 0;
+	
     //beräknar totala passengerar priset baserat på biljett och mat
     public int calculateTotalPassengerPrice(int ticketPrice, int foodPrice) {
         int totalPassengerPrice = ticketPrice + foodPrice;
@@ -62,10 +64,10 @@ public class CalculateCosts {
     }
     
     //la till denna för att använda Matildas Airplane med 'Seat[]'
-    public int calculateAirlineIncome2(Seat[] arrayPass, UI ui) {
+    public int calculateAirlineIncome2(Seat[] arrayPass){//, UI ui) {
         int sumPassengerPrices = 0;
         int ticketPrice = 0;
-        
+        int foodPrice = 0;
         
         //for (Passenger pass : arrayPass) {
         for (Seat chair : arrayPass) {
@@ -76,7 +78,9 @@ public class CalculateCosts {
                 } else if (chair.getSeatedPassenger().getFt() == FlightType.ECOCLASS) {
                     ticketPrice = 5000;
                 }
-                sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, ui.getTotalFoodPrice());
+                foodPrice = chair.getSeatedPassenger().getFoodOrderPrice();//f�r att f� den enskilda passagerarens matpris
+                sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, foodPrice);
+                //sumPassengerPrices = sumPassengerPrices + calculateTotalPassengerPrice(ticketPrice, ui.getTotalFoodPrice());
             }
             
             //bijettPris-metod ska anropas här under...
