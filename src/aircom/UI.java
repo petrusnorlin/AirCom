@@ -69,6 +69,7 @@ public class UI {
             System.out.println("2) Airline info");
             System.out.println("3) Show Airplane info");
             System.out.println("4) Take off Airplane");
+            System.out.println("5) Fill Airplane with passengers");
             System.out.println();
             System.out.println("0) Exit AirCom");
 
@@ -85,16 +86,25 @@ public class UI {
                 case 3: //Show Airplane info();
                     System.out.println();
                     System.out.println("Honolulu flight reservations:");
+                    System.out.println("First class");
                     flyg.printOutFirstClassSeatsReservations();
+                    System.out.println("Economy class");
                     flyg.printOutEcoSeatsReservations();
+                    System.out.println();
                     
                     System.out.println("Fiji flight reservations:");
+                    System.out.println("First class");
                     flyg2.printOutFirstClassSeatsReservations();
+                    System.out.println("Economy class");
                     flyg2.printOutEcoSeatsReservations();
+                    System.out.println();
                     
                     System.out.println("Tonga flight reservations:");
+                    System.out.println("First class");
                     flyg3.printOutFirstClassSeatsReservations();
-                    flyg3.printOutEcoSeatsReservations();                    
+                    System.out.println("Economy class");
+                    flyg3.printOutEcoSeatsReservations();
+                    System.out.println();                    
                     break;
                 case 4: //Take off Airplane(); //egentligen starta alla plan
                     //Thread t = new Thread(flyg);
@@ -129,6 +139,8 @@ public class UI {
 //                    	e.printStackTrace();
 //                    }
                     break;
+                case 5: 
+                    fillSeats();
                 default:
                     System.out.println("Please type number 0-4 only");
             }
@@ -369,7 +381,7 @@ public class UI {
         customer.setFoodOrderPrice(totalFoodPrice);
         int foodPrices = totalFoodPrice;//0;
         System.out.println();
-        System.out.println("Total price for all food ordered = " + foodPrices);
+        System.out.println("Total price for all food ordered = " + foodPrices + " kr");
         System.out.println();
         //int foodPrices2 = customer.getFoodOrderPrice(); 
 //        if (flightType == FlightType.FIRSTCLASS) {//'FoodMenu.firstClassMenu.get(customer.choseFood)' nedan, tar bort tillfälligt
@@ -481,6 +493,8 @@ public class UI {
                 case 0:
                     System.exit(0);
                 case 1:
+                    airlineIncome = 0;
+                    airlineIncomeEconomy = 0;
                     if(flyg.counterFirst > 0) {//flyg.getfClassSeats().length > 0
                         airlineIncome = airlineIncome + calcCosts.calculateAirlineIncome2(flyg.getfClassSeats());//, this);
                     }
@@ -509,7 +523,8 @@ public class UI {
                     calcCosts.printAirlineIncome(airlineIncome + airlineIncomeEconomy);// + airlineIncomeFirst);
                     break;
                 case 2:
-                	airlineIncome = 0;
+                    airlineIncome = 0;
+                    airlineIncomeEconomy = 0;
                     if(flyg.counterFirst > 0) {//flyg.getfClassSeats().length > 0
                         airlineIncome = airlineIncome + calcCosts.calculateAirlineIncome2(flyg.getfClassSeats());//, this);
                     }
@@ -563,16 +578,16 @@ public class UI {
                 for (int a = 0; a < firstClassFood.size(); a++) {    
                     i++;
                     if (firstClassFood.get(a).toString().length() < 5) {//> 20
-                        System.out.println((a+1) + ". " + firstClassFood.get(a).toString() + "\t\t\t\t\t\t" + firstClassFood.get(a).getPrice());//food
+                        System.out.println((a+1) + ". " + firstClassFood.get(a).toString() + "\t\t\t\t\t\t" + firstClassFood.get(a).getPrice() + " kr");//food
                     }
                     else if (firstClassFood.get(a).toString().length() < 10) {
-                        System.out.println((a+1) + ". " + firstClassFood.get(a).toString() + "\t\t\t\t\t" + firstClassFood.get(a).getPrice());//food
+                        System.out.println((a+1) + ". " + firstClassFood.get(a).toString() + "\t\t\t\t\t" + firstClassFood.get(a).getPrice() + " kr");//food
                     }
                     else if (firstClassFood.get(a).toString().length() > 30) {
-                        System.out.println((a+1) + ". " + firstClassFood.get(a).toString() + "\t\t" + firstClassFood.get(a).getPrice());
+                        System.out.println((a+1) + ". " + firstClassFood.get(a).toString() + "\t\t" + firstClassFood.get(a).getPrice() + " kr");
                     }
                     else {
-                        System.out.println((a+1) + ". " + firstClassFood.get(a).toString() + "\t\t\t\t" + firstClassFood.get(a).getPrice());
+                        System.out.println((a+1) + ". " + firstClassFood.get(a).toString() + "\t\t\t\t" + firstClassFood.get(a).getPrice() + " kr");
                     }
                 }
 
@@ -599,7 +614,19 @@ public class UI {
                 //for (Food food : economyClassFood) {
                 for (int a = 0; a < economyClassFood.size(); a++) {
                     i++;
-                    System.out.println((a+1) + ". " + economyClassFood.get(a).toString() + "\t\t\t\t" + economyClassFood.get(a).getPrice());
+                    //System.out.println((a+1) + ". " + economyClassFood.get(a).toString() + "\t\t\t\t" + economyClassFood.get(a).getPrice());
+                    if (economyClassFood.get(a).toString().length() < 5) {//> 20
+                        System.out.println((a+1) + ". " + economyClassFood.get(a).toString() + "\t\t\t\t\t\t" + economyClassFood.get(a).getPrice() + " kr");//food
+                    }
+                    else if (economyClassFood.get(a).toString().length() < 10) {
+                        System.out.println((a+1) + ". " + economyClassFood.get(a).toString() + "\t\t\t\t\t" + economyClassFood.get(a).getPrice() + " kr");//food
+                    }
+                    else if (economyClassFood.get(a).toString().length() > 30) {
+                        System.out.println((a+1) + ". " + economyClassFood.get(a).toString() + "\t\t" + economyClassFood.get(a).getPrice() + " kr");
+                    }
+                    else {
+                        System.out.println((a+1) + ". " + economyClassFood.get(a).toString() + "\t\t\t\t" + economyClassFood.get(a).getPrice() + " kr");
+                    }
                 }
                 //Iterator it = FoodMenu.ecoClassMenuOld.entrySet().iterator();
                 //int i = 0;
@@ -612,7 +639,7 @@ public class UI {
                 //Food f = new Food(economyClassFood.get(reader.nextInt()-1).getFoodItem());
                 //foodChoices.add(f);
                 System.out.println();
-                System.out.println("0. End food menu");
+                System.out.println("0. Done ordering. End food menu");
                 menyVal = reader.nextInt();
                 if (menyVal == 0) {
                     break;
@@ -676,8 +703,38 @@ public class UI {
     public void fillSeats() {
     	Random rnd = new Random();
     	int r = rnd.nextInt(5);
-    	for(int i = 0; i < r; i++) {
-    		Passenger customer = new Passenger(FlightType.FIRSTCLASS, true, "Mr", "X" + i, 650410013, phoneNumber, GenderType.MALE);
-    	}
+    	
+        
+        //if (flightType == FlightType.ECOCLASS) {
+            Passenger customerE;
+            for(int i = 0; i < r; i++) {
+                customerE = new Passenger(FlightType.ECOCLASS, true, "Mrs", "Y" + i, 650410013, phoneNumber, GenderType.FEMALE);
+//                if (dest.equals("Honolulu")) {
+                    flyg.getEcoClassSeats()[flyg.counterEco] = new Seat("B" + flyg.counterEco++, customerE);
+                //} else if (dest.equals("Fiji")) {
+                    flyg2.getEcoClassSeats()[flyg2.counterEco] = new Seat("B" + flyg2.counterEco++, customerE);
+                //} else if (dest.equals("Tonga")) {
+                    flyg3.getEcoClassSeats()[flyg3.counterEco] = new Seat("B" + flyg3.counterEco++, customerE);
+                //}
+            }
+            //customer = new Passenger(FlightType.FIRSTCLASS, true, "Mrs", "Y" + i, 650410013, phoneNumber, GenderType.FEMALE);
+            
+        //}
+        //else if (flightType == FlightType.FIRSTCLASS) {
+            Passenger customerF;
+            for(int i = 0; i < r; i++) {
+                customerF = new Passenger(FlightType.FIRSTCLASS, true, "Mr", "X" + i, 650410013, phoneNumber, GenderType.MALE);
+                
+                //if (dest.equals("Honolulu")) {
+                    flyg.getfClassSeats()[flyg.counterFirst] = new Seat("A" + flyg.counterFirst++, customerF);
+                //} else if (dest.equals("Fiji")) {
+                    flyg2.getfClassSeats()[flyg2.counterFirst] = new Seat("A" + flyg2.counterFirst++, customerF);
+                //} else if (dest.equals("Tonga")) {
+                    flyg3.getfClassSeats()[flyg3.counterFirst] = new Seat("A" + flyg3.counterFirst++, customerF);
+                //}
+            }
+            
+            
+        //}
     }
 }
